@@ -1,0 +1,164 @@
+.navbar-main{
+height:100%;
+width:100%;
+padding-top:6px;
+padding-bottom:6px;
+background-color:black;
+position: relative;
+}
+
+.Profiletable table{
+cellspacing: 10px;
+}
+
+
+.navbar-main li{
+display:block;
+transition-duration: 0.5s;
+width:13%
+padding-top:5%;
+padding-bottom:5%;
+padding-left:7px;
+
+}
+.navbar-main li:hover{
+cursor:pointer;
+background-color:rgb(34,21,106);
+}
+
+.navbar-main ul li ul{
+visibility:hidden;
+opacity:0;
+position:relative;
+transition: all 0.5s ease;
+margin-top: 1rem;
+left:0;
+display: none;
+}
+
+.navbar-main ul li:hover > ul, ul li ul:hover{
+visibility:visible;
+opacity:1;
+display:block;
+margin-bottom:6px;
+margin-right:6px;
+background-color:rgb(68,65,60);
+padding-left:6px;
+
+}
+.navbar-main ul li li:hover > ul, ul li li:hover{
+background-color:rgb(34,21,106);
+color:white;
+}
+.navbar-main ul li li:hover > ul li{
+background-color:rgb(34,21,106);
+color:white;
+}
+.navbar-main ul li ul li{
+clear:both;
+width:100%;
+
+}
+.sideycon{
+
+margin:1em 0.1em 0.1em 0.8%;
+width:100%;
+height:100%;
+clear:none;
+float:left;
+padding:4px;
+display:inline-block;
+position:relative;
+z-index: 1;
+
+}
+.sidebarmenu{
+width:15%;
+}
+.sidebody{
+float:left;
+border:1px solid black;
+margin-left:19%;
+margin-top:-640px;
+padding:15px;
+border-radius:5px;
+width:80%;
+height:100%;
+
+}
+
+.menusidey{
+width:15%;
+float:left;
+height:100%;
+
+}
+
+.sidebody td{
+padding:10px;
+margin:7px;
+}
+
+
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width:17%; /* Set the width of the sidebar */
+  /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  
+}
+/*
+ The navigation menu links 
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  color: blue;
+  display: block;
+}
+
+ When you mouse over the navigation links, change their color 
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+ Style page content 
+.main {
+  margin-left: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+*/
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} 
+
+--------------------------------------------
+
+body {background: #EAEAEA;}
+.sidebody .row{align:center;}
+.user-details {position: relative; padding: 0;}
+.user-details .user-image {position: relative;  z-index: 1; width: 100%; text-align: center;}
+.user-image img { clear: both; margin: auto; position: relative;}
+
+.user-details .user-info-block {width: 100%; position: absolute; top: 55px; background: rgb(255, 255, 255); z-index: 0; padding-top: 35px;}
+.user-info-block .user-heading {width: 100%; text-align: center; margin: 10px 0 0;}
+.user-info-block .navigation {float: left; width: 100%; margin: 0; padding: 0; list-style: none; border-bottom: 1px solid #428BCA; border-top: 1px solid #428BCA;}
+  .navigation li {float: left; margin: 0; padding: 0;}
+   .navigation li a {padding: 20px 30px; float: left;}
+   .navigation li.active a {background: #428BCA; color: #fff;}
+.user-info-block .user-body {float: left; padding: 5%; width: 90%;}
+  .user-body .tab-content > div {float: left; width: 100%;}
+  .user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
+
+.glyphicon glyphicon-user{
+content:"\e008";
+
+}
+

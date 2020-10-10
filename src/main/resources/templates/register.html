@@ -1,0 +1,1941 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>LIT - LMS</title>
+    <link rel="shortcut icon" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/image.php/edumy/theme/1583195737/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="moodle, Edumy" />
+    <link rel="stylesheet" type="text/css" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.css" />
+    <script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script>
+    <link rel="stylesheet" type="text/css" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/styles.php/edumy/1583195737_1/all" />
+    <link href="../static/assets/css/litlms.css" rel="stylesheet"th:href="@{/assets/css/litlms.css}">
+    <link href="../static/assets/css/yui-moodlesimple.css" rel="stylesheet"th:href="@{/assets/css/yui-moodlesimple.css}">
+    <script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1","sesskey":"Z0SKrx6VG0","themerev":"1583195737","slasharguments":1,"theme":"edumy","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1583195737","admin":"admin","svgicons":true,"usertimezone":"Europe\/London","contextid":2,"developerdebug":true};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":true,"base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","combine":true,"filter":"RAW","insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?m\/1583195737\/","combine":true,"comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","ext":false,"root":"m\/1583195737\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":"DEBUG","modules":{"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_html-beautify":{},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1583195737\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/javascript.php\/1583195737\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/javascript.php\/1583195737\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet"th:href="@{/assets/css/bootstrap.min.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon.css}">
+    <link rel="stylesheet"th:href="@{/assets/css/jquery-ui.min.css}">
+    <link rel="stylesheet"th:href="@{/assets/css/responsive.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/flaticon.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/animate.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/menu.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/ace-responsive-menu.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon-mdl.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon-dashboard.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/megadropdown.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/bootstrap-select.min.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/simplebar.min.js}">
+    <link  rel="stylesheet"th:href="@{/assets/css/progressbar.css}">
+    <link rel="stylesheet"th:href="@{/assets/css/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/bootstrap.min.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/responsive.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon-mdl.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon-dashboard.css">
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-61019949-7', 'auto');
+ga('send', 'pageview');
+</script>
+    <script>
+
+        function toggleClock() {
+    // get the clock
+    var myClock = document.getElementById('showly');
+
+    // get the current value of the clock's display property
+    var displaySetting = myClock.style.display;
+
+    // also get the clock button, so we can change what it says
+    var clockButton = document.getElementById('clockButton');
+
+    // now toggle the clock and the button text, depending on current state
+    if (displaySetting == 'none') {
+      // clock is visible. hide it
+      myClock.style.display = 'block';
+      // change button text
+
+    }
+
+  }
+       function toggleClock2() {
+    // get the clock
+    var myClock = document.getElementById('showly');
+
+    // get the current value of the clock's display property
+    var displaySetting = myClock.style.display;
+
+    // also get the clock button, so we can change what it says
+    var clockButton = document.getElementById('clockButton');
+
+    // now toggle the clock and the button text, depending on current state
+    if (displaySetting == 'block') {
+      // clock is visible. hide it
+      myClock.style.display = 'none';
+      // change button text
+
+    }
+
+  }
+    </script>
+</head>
+
+<body  id="page-login-signup" class="format-site  path-login gecko dir-ltr lang-en yui-skin-sam yui3-skin-sam demo-createdbycocoon-com--moodle-edumy-1 pagelayout-login course-1 context-1 ccn_header_style_1 ccn_footer_style_1 ccn_blog_style_1 ccn_course_list_style_1 role-standard">
+<div style='display:none' id='sbbhscc'></div>
+<script type="text/javascript">
+            var sbbvscc='';
+            var sbbgscc='';
+            function genPid() {return String.fromCharCode(106)+String.fromCharCode(70) ; };
+          </script>
+<div id='sbbfrcc' style='position: absolute; top: -10px; left: 30px; font-size:1px'></div>
+<script type="text/javascript">(function(XHR){var open=XHR.prototype.open;var send=XHR.prototype.send;var parser=document.createElement('a');XHR.prototype.open=function(method, url, async, user, pass){if(typeof async=='undefined'){async=true;}parser.href=url;if(parser.host==''){parser.href=parser.href;}this.ajax_hostname=parser.hostname;open.call(this, method, url, async, user, pass);};XHR.prototype.send=function(data){if(location.hostname==this.ajax_hostname)this.setRequestHeader("X-MOD-SBB-CTYPE", "xhr");send.call(this, data);}})(XMLHttpRequest);if(typeof(fetch)!="undefined"){var nsbbfetch=fetch;fetch=function(url, init){if(typeof(url)==="object" && typeof(url.url)==="string"){url=url.url;}function sbbSd(url, domain){var parser=document.createElement('a');parser.href=url;if(parser.host==''){parser.href=parser.href;}return parser.hostname==location.hostname;}if(sbbSd(url, document.domain)){init=typeof init !=='undefined' ? init :{};if(typeof(init.headers)==="undefined"){init.headers={};}init.headers['X-MOD-SBB-CTYPE']='fetch';}return nsbbfetch(url, init);};}function sbbgc(check_name){var start=document.cookie.indexOf(check_name+"=");var oVal='';var len=start+check_name.length+1;if((!start)&&(document.cookie.substring(0,check_name.length)!=check_name)){oVal='';}else if(start==-1){oVal='';}else{var end=document.cookie.indexOf(';',len);if(end==-1)end=document.cookie.length;var oVal=document.cookie.substring(len,end);};return oVal;}function addmg(inm,ext){var primgobj=document.createElement('IMG');primgobj.src=window.location.protocol+"//"+window.location.hostname+(window.location.port && window.location.port!=80 ? ':'+window.location.port: '')+"/sbbi/?sbbpg="+inm+(ext?"&"+ext:"");var sbbDiv=document.getElementById('sbbfrcc');sbbDiv.appendChild(primgobj);};function addprid(prid){var oldVal=sbbgc("PRLST");if((oldVal.indexOf(prid)==-1)&&(oldVal.split('/').length<5)){if(oldVal!=''){oldVal+='/';}document.cookie='PRLST='+oldVal+escape(prid)+';path=/;';}}var sbbeccf=function(){this.sp3="jass";this.sf1=function(vd){return sf2(vd)+32;};var sf2=function(avd){return avd*12;};this.sf4=function(yavd){return yavd+2;};var strrp=function(str, key, value){if(str.indexOf('&'+key+'=')> -1 || str.indexOf(key+'=')==0){var idx=str.indexOf('&'+key+'=');if(idx==-1)idx=str.indexOf(key+'=');var end=str.indexOf('&', idx+1);var newstr;if(end !=-1)newstr=str.substr(0, idx)+str.substr(end+(idx ? 0 : 1))+'&'+key+'='+value;else newstr=str.substr(0, idx)+'&'+key+'='+value;return newstr;}else return str+'&'+key+'='+value;};var strgt=function(name, text){if(typeof text !='string')return "";var nameEQ=name+"=";var ca=text.split(/[;&]/);for(var i=0;i < ca.length;i++){var c=ca[i];while(c.charAt(0)==' ')c=c.substring(1, c.length);if(c.indexOf(nameEQ)==0)return c.substring(nameEQ.length, c.length);}return "";};this.sfecgs={sbbgh:function(){var domain=document.location.host;if(domain.indexOf('www.')==0)domain=domain.replace('www.', '');return domain;}, f:function(name, value){var fv="";if(window.globalStorage){var host=this.sbbgh();try{if(typeof(value)!="undefined")globalStorage[host][name]=value;else{fv=globalStorage[host][name];if(typeof(fv.toString)!="undefined")fv=fv.toString();}}catch(e){}}return fv;}, name:"sbbrf"};this.sfecls={f:function(name, value){var fv="";try{if(window.localStorage){if(typeof(value)!="undefined")localStorage.setItem(name, value);else{fv=localStorage.getItem(name);if(typeof(fv.toString)!="undefined")fv=fv.toString();}}}catch(e){}return fv;}, name:"sbbrf"};this.sbbcv=function(invl){try{var invalArr=invl.split("-");if(invalArr.length>1){if(invalArr[0]=="A"||invalArr[0]=="D"){invl=invalArr[1];}else invl="";}if(invl==null||typeof(invl)=="undefined"||invl=="falseImgUT"||invl=="undefined"||invl=="null"||invl!=encodeURI(invl))invl="";if(typeof(invl).toLowerCase()=="string")if(invl.length>20)if(invl.substr(0,2)!="h4")invl="";}catch(ex){invl="";}return invl;};this.sbbsv=function(fv){for(var elm in this){if(this[elm].name=="sbbrf"){this[elm].f("altutgv2",fv);}}document.cookie="UTGv2="+fv+';expires=Tue, 31 Dec 2030 00:00:00 UTC;path=/;';};this.sbbgv=function(){var valArr=Array();var currVal="";for(var elm in this){if(this[elm].name=="sbbrf"){currVal=this[elm].f("altutgv2");currVal=this.sbbcv(currVal);if(currVal!="")valArr[currVal]=(typeof(valArr[currVal])!="undefined"?valArr[currVal]+1:1);}}var lb=0;var fv="";for(var val in valArr){if(valArr[val]>lb){fv=val;lb=valArr[val]}}if(fv=="")fv=sbbgc("UTGv2");fv=this.sbbcv(fv);if(fv!="")this.sbbsv(fv);else this.sbbsv("D-h4c12f9d60581051ae188182f12352645360");return fv;};};function m2vr(m1,m2){var i=0;var rc="";var est="ghijklmnopqrstuvwyz";var rnum;var rpl;var charm1=m1.charAt(i);var charm2=m2.charAt(i);while(charm1!=""||charm2!=""){rnum=Math.floor(Math.random()* est.length);rpl=est.substring(rnum,rnum+1);rc+=(charm1==""?rpl:charm1)+(charm2==""?rpl:charm2);i++;charm1=m1.charAt(i);charm2=m2.charAt(i);}return rc;}function sbbls(prid){try{var eut=sbbgc("UTGv2");window.sbbeccfi=new sbbeccf();window.sbbgs=sbbeccfi.sbbgv();if(eut!=sbbgs && sbbgs!="" && typeof(sbbfcr)=="undefined"){addmg('utMedia',"vii="+m2vr("17973a0dfafe020be7de36d7e36732b3",sbbgs));}var sbbiframeObj=document.createElement('IFRAME');var dfx=new Date();sbbiframeObj.id='SBBCrossIframe';sbbiframeObj.title='SBBCrossIframe';sbbiframeObj.tabindex='-1';sbbiframeObj.lang='en';sbbiframeObj.style.visibility='hidden';sbbiframeObj.setAttribute('aria-hidden', 'true');sbbiframeObj.style.border='0px';if(document.all){sbbiframeObj.style.position='absolute';sbbiframeObj.style.top='-1px';sbbiframeObj.style.height='1px';sbbiframeObj.style.width='28px';}else{sbbiframeObj.style.height='1px';sbbiframeObj.style.width='0px';}sbbiframeObj.scrolling="NO";sbbiframeObj.src=window.location.protocol+"//"+window.location.hostname+(window.location.port && window.location.port!=80 ? ':'+window.location.port: '')+'/sbbi/?sbbpg=sbbShell&gprid='+prid+'';var sbbDiv=document.getElementById('sbbfrcc');sbbDiv.appendChild(sbbiframeObj);}catch(ex){;}}try{var y=unescape(sbbvscc.replace(/^<\!\-\-\s*|\s*\-\->$/g,''));document.getElementById('sbbhscc').innerHTML=y;var x=unescape(sbbgscc.replace(/^<\!\-\-\s*|\s*\-\->$/g,''));}catch(e){x='function genPid(){return "jser";}';}try{if(window.gprid==undefined)document.write('<'+'script type="text/javascri'+'pt">'+x+"var gprid=genPid();addprid(gprid);var sbbfcr=true;sbbls(gprid);<"+"/script>");}catch(e){addprid("dwer");}</script>
+<div class="preloader"></div>
+<div class="wrapper">
+    <header class="header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu" style="display:inline;">
+        <div class="container-fluid">
+            <!-- Ace Responsive Menu -->
+
+            <nav style="width:auto; display: inline; position: relative;">
+
+                <!-- Menu Toggle btn-->
+
+                <div  style="width:10%; float:left; margin: 0;">
+                    <div class="menu-toggle">
+                        <!--<img class="nav_logo_img img-fluid" src="images/lit-07.png" height="100px" width="150px" alt="Edumy">-->
+                        <button type="button" id="menu-btn">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+
+
+                </div>
+
+                <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal" style="background-color: #000099;color:white;">
+                    <li >
+                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1" class="navbar_brand float-left dn-smd" style="padding: 0px 0px 0px 0px; float:center;">
+                            <img  src="images/lit-07.png" height="80px" width="230px" style="padding: 0px 0px 0px 0px;" alt="Edumy">
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="#">
+                            Home
+                        </a>
+
+                    </li><li>
+                    <a id="drop-down-5ee662ab76acb5ee662ab74d6b3" th:href="@{/allcourses}">
+                        Courses
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76acb5ee662ab74d6b3">
+
+                        <li><a th:href="@{|/acourses?dept=1|}"><span class="title"> Data Science & Analytics</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=2|}"><span class="title"> Microsoft Dynamics</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=3|}"><span class="title"> Web development</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=4|}"><span class="title"> Software development</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=5|}"><span class="title"> Robotics & Automation</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=6|}"><span class="title"> Design</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=7|}"><span class="title"> UI/UX Prototyping</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=8|}"><span class="title"> Marketing</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76b995ee662ab74d6b4" href="#">
+                        Events
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76b995ee662ab74d6b4">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=86"><span class="title">Event List</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=87"><span class="title">Event Single</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title">Calendar</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title"> Month view</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=day&amp;time=1577491200"><span class="title"> Day view</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76c865ee662ab74d6b5" href="#">
+                        Pages
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76c865ee662ab74d6b5">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=16"><span class="title"> About Us</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=15"><span class="title"> Gallery</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=81"><span class="title"> FAQ</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php"><span class="title"> Login</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/signup.php"><span class="title"> Register</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=1"><span class="title"> Become an Instructor</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/admin/tool/dataprivacy/summary.php"><span class="title"> Terms &amp; Conditions</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=2"><span class="title"> UI Elements</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76d2f5ee662ab74d6b6" href="#">
+                        Blog
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76d2f5ee662ab74d6b6">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php"><span class="title"> Blog List 1</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/blog/index.php"><span class="title"> Blog List 2</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/3/blog/index.php"><span class="title"> Blog List 3</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php?entryid=2"><span class="title"> Blog Single</span></a></li>
+                    </ul>
+                </li><li>
+                    <a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=80">Contact</a>
+                </li>
+                    <li style="width:6%">
+                    </li>
+
+
+                    <!--<ul class="sign_up_btn pull-right dn-smd mt20" style="width:10%">-->
+                    <li class="list-inline-item list_s"></li>
+                    <li class="list-inline-item list_s">
+                        <div class="search_overlay">
+                            <a id="drop-down-5ee662ab769625ee662ab74d6b2" href="#"></a>
+                            <a id="search-button-listener" onclick="toggleClock()" class="mk-search-trigger mk-fullscreen-trigger" href="#">
+                                <span id="search-button"><i class="flaticon-magnifying-glass"></i></span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <ul class="header_user_notif ccn-frontend-header_user_notif pull-right dn-smd">
+
+                            <li class="user_setting ccn-settings-nav">
+                                <div class="dropdown">
+                                    <a class="notification_icon" href="#" data-toggle="dropdown"><span class="flaticon-settings"></span></a>
+                                    <div class="dropdown-menu notification_dropdown_content">
+                                        <div class="so_heading">
+                                            <p>Navigation</p>
+                                        </div>
+                                        <div class="user_setting_content">
+                                            <div class="so_content" data-simplebar="init">
+                                                <nav class="list-group" aria-label="Site">
+                                                    <a class=" active" href="https://demo.createdbycocoon.com/moodle/edumy/1/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="1" data-nodetype="1"
+                                                       data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" data-preceedwithhr="0" >
+
+                                                        <i class="icon fa fa-home fa-fw " aria-hidden="true"  ></i>
+                                                        Home
+
+                                                    </a>
+                                                    <a class=" " href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0"
+                                                       data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1" >
+
+                                                        <i class="icon fa fa-calendar fa-fw " aria-hidden="true"  ></i>
+                                                        Calendar
+
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="user_setting">
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><img class="rounded-circle" src="https://demo.createdbycocoon.com/moodle/edumy/1/user/pix.php/1/f1.jpg" alt="guest"></a>
+                                    <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(-9px, -5px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <div class="user_set_header">
+                                            <img class="float-left" src="https://demo.createdbycocoon.com/moodle/edumy/1/user/pix.php/1/f1.jpg" alt="guest">
+                                            <p>guest <br><span class="address">root@localhost</span></p>
+                                        </div>
+                                        <div class="user_setting_content">
+                                            <div class="usermenu"><span class="login">You are currently using guest access (<a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php">Log in</a>)</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <!--</ul>&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+    <div id="showly" style="display:none">
+        <div class="sign_up_modal modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="toggleClock2()" ><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home">
+                            <div class="login_form">
+                                <div class="heading">
+                                    <h3 class="text-center">Login to your account</h3>
+                                </div>
+                                <aside id="block-region-login" class="block-region" data-blockregion="login" data-droptarget="1"><div id="inst41" class=" block_cocoon_login block " role="complementary" data-block="cocoon_login"  aria-label="[Cocoon] Login"  >
+
+
+
+
+
+                                    <div class="">
+
+                                        <form class="loginform" id="login" method="post" action="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php"><div class="form-group"><input type="text" name="username" placeholder="Username" id="login_username"  class="form-control" value="" autocomplete="username"/></div><div class="form-group"><input type="password" name="password" id="login_password" placeholder="Password"  class="form-control" value="" autocomplete="current-password"/></div>
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="rememberusername" id="rememberusername">
+                                                <label class="custom-control-label" for="rememberusername">Remember username</label>
+                                                <a class="tdu btn-fpswd float-right" href="https://demo.createdbycocoon.com/moodle/edumy/1/login/forgot_password.php">Lost password?</a>
+                                            </div><button type="submit" class="btn btn-log btn-block btn-thm2">Log in</button><input type="hidden" name="logintoken" value="MdLjGxUVGp9Zz5e6Jxen9fKyK32jDq0r" /></form>
+
+
+
+                                    </div>
+
+
+                                </div></aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search_overlay">
+            <div class="mk-fullscreen-search-overlay" id="mk-search-overlay">
+                <a href="#" class="mk-fullscreen-close" onclick="toggleClock2()" id="mk-fullscreen-close-button"><i class="fa fa-times"></i></a>
+                <div id="mk-fullscreen-search-wrapper">
+                    <div id="ccn_mk-fullscreen-search-wrapper">
+                        <aside id="block-region-search" class="block-region" data-blockregion="search" data-droptarget="1"><div id="inst40" class=" block_cocoon_globalsearch block " role="complementary" data-block="cocoon_globalsearch"  aria-label="[Cocoon] Global search"  >
+
+
+
+
+
+                            <div class="">
+                                <form class="ccn-mk-fullscreen-searchform" action="https://demo.createdbycocoon.com/moodle/edumy/1/search/index.php"><fieldset>
+                                    <input id="searchform_search" name="q" class="ccn-mk-fullscreen-search-input" placeholder="Search courses..." type="text" size="15" /><input type="hidden" name="context" value="2" /><i class="flaticon-magnifying-glass fullscreen-search-icon">
+                                    <input value="" type="submit" id="searchform_button"></i></fieldset></form>
+
+
+                            </div>
+
+
+                        </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="inner_page_breadcrumb">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <div class="breadcrumb_content">
+                        <h4 class="breadcrumb_title">Lampnet Institute of Technology</h4>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/landingpage}"  >Home</a>
+                            </li>
+                            <li class="breadcrumb-item active "> <a th:href="@{/login}"  >Log in</a></li>
+                            <li class="breadcrumb-item active ">New account</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- end edumy -->
+
+
+
+
+
+
+    <section class="our-log bgc-fa">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-lg-6 offset-lg-3">
+                    <div class="login_form inner_page">
+
+                        <span id="maincontent"></span><div class="">
+                        <div class="">
+                            <div class="">
+                                <div class="">
+                                    <div class="">
+                                        <div class="">
+
+                                            <div class="heading">
+                                                <h3 class="text-center">New account</h3>
+                                                <p class="text-center">Have an account? <a class="text-thm" href="index.php">Login</a></p>
+                                            </div>
+                                        </div>
+                                        <form autocomplete="off" method="POST" th:object="${userForm}" accept-charset="utf-8" th:action="@{/register}"  id="mform1_kA2OUJUSNXRjLgq" class="mform">
+                                            <div style="display: none;"><input name="sesskey" type="hidden" value="8TBqsOFrWN" />
+                                                <input name="_qf__login_signup_form" type="hidden" value="1" />
+                                                <input name="mform_isexpanded_id_createuserandpass" type="hidden" value="1" />
+                                                <input name="mform_isexpanded_id_supplyinfo" type="hidden" value="1" />
+                                            </div>
+
+                                            <div class="collapsible-actions"><span class="collapseexpand">Expand all</span></div>
+
+                                            <fieldset class="clearfix collapsible"  id="id_createuserandpass">
+                                                <legend class="ftoggler">Choose your username and password</legend>
+                                                <div class="fcontainer clearfix">
+                                                    <div id="fitem_id_username" class="form-group row  fitem   " >
+                                                        <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+            <abbr class="initialism text-danger" title="Required"><i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required" aria-label="Required"></i></abbr>
+
+
+        </span>
+                                                            <label class="col-form-label d-inline " for="id_username">
+                                                                Username
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9 form-inline felement" data-fieldtype="text">
+                                                            <input type="text"
+                                                                   class="form-control "
+                                                                   name="username"
+                                                                   id="id_username"
+                                                                   value=""
+                                                                   size="12"
+                                                                   maxlength="100" autocapitalize="none" >
+                                                            <div class="form-control-feedback invalid-feedback" id="id_error_username" >
+
+                                                            </div>
+                                                        </div>
+                                                    </div><div id="fitem_id_passwordpolicyinfo" class="form-group row  fitem femptylabel  " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+
+
+
+        </span>
+                                                        <span class="col-form-label d-inline-block ">
+
+        </span>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="static">
+                                                        <div class="form-control-static">
+                                                            The password must have at least 8 characters, at least 1 digit(s), at least 1 lower case letter(s), at least 1 upper case letter(s), at least 1 non-alphanumeric character(s) such as as *, -, or #
+                                                        </div>
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_passwordpolicyinfo" >
+
+                                                        </div>
+                                                    </div>
+                                                </div><div id="fitem_id_password" class="form-group row  fitem   " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+            <abbr class="initialism text-danger" title="Required"><i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required" aria-label="Required"></i></abbr>
+
+
+        </span>
+                                                        <label class="col-form-label d-inline " for="id_password">
+                                                            Password
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="password">
+                                                        <input type="password"
+                                                               class="form-control "
+                                                               name="password"
+                                                               id="id_password"
+                                                               value=""
+                                                               size="12"
+                                                               maxlength="32" autocomplete="off">
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_password" >
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div></fieldset>
+                                            <fieldset class="clearfix collapsible"  id="id_supplyinfo">
+                                                <legend class="ftoggler">More details</legend>
+                                                <div class="fcontainer clearfix">
+                                                    <div id="fitem_id_email" class="form-group row  fitem   " >
+                                                        <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+            <abbr class="initialism text-danger" title="Required"><i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required" aria-label="Required"></i></abbr>
+
+
+        </span>
+                                                            <label class="col-form-label d-inline " for="id_email">
+                                                                Email address
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-md-9 form-inline felement" data-fieldtype="text">
+                                                            <input type="text"
+                                                                   class="form-control "
+                                                                   name="email"
+                                                                   id="id_email"
+                                                                   value=""
+                                                                   size="25"
+                                                                   maxlength="100" >
+                                                            <div class="form-control-feedback invalid-feedback" id="id_error_email" >
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="fitem_id_firstname" class="form-group row  fitem   " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+            <abbr class="initialism text-danger" title="Required"><i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required" aria-label="Required"></i></abbr>
+
+
+        </span>
+                                                        <label class="col-form-label d-inline " for="id_firstname">
+                                                            First name
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="text">
+                                                        <input type="text"
+                                                               class="form-control "
+                                                               name="fname"
+                                                               id="id_firstname"
+                                                               value=""
+                                                               size="30"
+                                                               maxlength="100" >
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_firstname" >
+
+                                                        </div>
+                                                    </div>
+                                                </div><div id="fitem_id_lastname" class="form-group row  fitem   " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+            <abbr class="initialism text-danger" title="Required"><i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required" aria-label="Required"></i></abbr>
+
+
+        </span>
+                                                        <label class="col-form-label d-inline " for="id_lastname">
+                                                            Surname
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="text">
+                                                        <input type="text"
+                                                               class="form-control "
+                                                               name="sname"
+                                                               id="id_lastname"
+                                                               value=""
+                                                               size="30"
+                                                               maxlength="100" >
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_lastname" >
+
+                                                        </div>
+                                                    </div>
+                                                </div><div id="fitem_id_city" class="form-group row  fitem   " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+
+
+
+        </span>
+                                                        <label class="col-form-label d-inline " for="id_city">
+                                                            City/town
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="text">
+                                                        <input type="text"
+                                                               class="form-control "
+                                                               name="city"
+                                                               id="id_city"
+                                                               value=""
+                                                               size="20"
+                                                               maxlength="120" >
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_city" >
+
+                                                        </div>
+                                                    </div>
+                                                </div><div id="fitem_id_country" class="form-group row  fitem   " >
+                                                    <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+
+
+
+        </span>
+                                                        <label class="col-form-label d-inline " for="id_country">
+                                                            Country
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-md-9 form-inline felement" data-fieldtype="select">
+                                                        <select class="custom-select
+
+                       "
+                                                                name="country"
+                                                                id="id_country"
+
+                                                        >
+                                                            <option value="" selected
+                                                            >Select a country</option>
+                                                            <option value="AF"
+                                                            >Afghanistan</option>
+                                                            <option value="AX"
+                                                            >Åland Islands</option>
+                                                            <option value="AL"
+                                                            >Albania</option>
+                                                            <option value="DZ"
+                                                            >Algeria</option>
+                                                            <option value="AS"
+                                                            >American Samoa</option>
+                                                            <option value="AD"
+                                                            >Andorra</option>
+                                                            <option value="AO"
+                                                            >Angola</option>
+                                                            <option value="AI"
+                                                            >Anguilla</option>
+                                                            <option value="AQ"
+                                                            >Antarctica</option>
+                                                            <option value="AG"
+                                                            >Antigua And Barbuda</option>
+                                                            <option value="AR"
+                                                            >Argentina</option>
+                                                            <option value="AM"
+                                                            >Armenia</option>
+                                                            <option value="AW"
+                                                            >Aruba</option>
+                                                            <option value="AU"
+                                                            >Australia</option>
+                                                            <option value="AT"
+                                                            >Austria</option>
+                                                            <option value="AZ"
+                                                            >Azerbaijan</option>
+                                                            <option value="BS"
+                                                            >Bahamas</option>
+                                                            <option value="BH"
+                                                            >Bahrain</option>
+                                                            <option value="BD"
+                                                            >Bangladesh</option>
+                                                            <option value="BB"
+                                                            >Barbados</option>
+                                                            <option value="BY"
+                                                            >Belarus</option>
+                                                            <option value="BE"
+                                                            >Belgium</option>
+                                                            <option value="BZ"
+                                                            >Belize</option>
+                                                            <option value="BJ"
+                                                            >Benin</option>
+                                                            <option value="BM"
+                                                            >Bermuda</option>
+                                                            <option value="BT"
+                                                            >Bhutan</option>
+                                                            <option value="BO"
+                                                            >Bolivia, Plurinational State Of</option>
+                                                            <option value="BQ"
+                                                            >Bonaire, Sint Eustatius And Saba</option>
+                                                            <option value="BA"
+                                                            >Bosnia And Herzegovina</option>
+                                                            <option value="BW"
+                                                            >Botswana</option>
+                                                            <option value="BV"
+                                                            >Bouvet Island</option>
+                                                            <option value="BR"
+                                                            >Brazil</option>
+                                                            <option value="IO"
+                                                            >British Indian Ocean Territory</option>
+                                                            <option value="BN"
+                                                            >Brunei Darussalam</option>
+                                                            <option value="BG"
+                                                            >Bulgaria</option>
+                                                            <option value="BF"
+                                                            >Burkina Faso</option>
+                                                            <option value="BI"
+                                                            >Burundi</option>
+                                                            <option value="CV"
+                                                            >Cabo Verde</option>
+                                                            <option value="KH"
+                                                            >Cambodia</option>
+                                                            <option value="CM"
+                                                            >Cameroon</option>
+                                                            <option value="CA"
+                                                            >Canada</option>
+                                                            <option value="KY"
+                                                            >Cayman Islands</option>
+                                                            <option value="CF"
+                                                            >Central African Republic</option>
+                                                            <option value="TD"
+                                                            >Chad</option>
+                                                            <option value="CL"
+                                                            >Chile</option>
+                                                            <option value="CN"
+                                                            >China</option>
+                                                            <option value="CX"
+                                                            >Christmas Island</option>
+                                                            <option value="CC"
+                                                            >Cocos (Keeling) Islands</option>
+                                                            <option value="CO"
+                                                            >Colombia</option>
+                                                            <option value="KM"
+                                                            >Comoros</option>
+                                                            <option value="CG"
+                                                            >Congo</option>
+                                                            <option value="CD"
+                                                            >Congo, The Democratic Republic Of The</option>
+                                                            <option value="CK"
+                                                            >Cook Islands</option>
+                                                            <option value="CR"
+                                                            >Costa Rica</option>
+                                                            <option value="CI"
+                                                            >Côte d'Ivoire</option>
+                                                            <option value="HR"
+                                                            >Croatia</option>
+                                                            <option value="CU"
+                                                            >Cuba</option>
+                                                            <option value="CW"
+                                                            >Curaçao</option>
+                                                            <option value="CY"
+                                                            >Cyprus</option>
+                                                            <option value="CZ"
+                                                            >Czechia</option>
+                                                            <option value="DK"
+                                                            >Denmark</option>
+                                                            <option value="DJ"
+                                                            >Djibouti</option>
+                                                            <option value="DM"
+                                                            >Dominica</option>
+                                                            <option value="DO"
+                                                            >Dominican Republic</option>
+                                                            <option value="EC"
+                                                            >Ecuador</option>
+                                                            <option value="EG"
+                                                            >Egypt</option>
+                                                            <option value="SV"
+                                                            >El Salvador</option>
+                                                            <option value="GQ"
+                                                            >Equatorial Guinea</option>
+                                                            <option value="ER"
+                                                            >Eritrea</option>
+                                                            <option value="EE"
+                                                            >Estonia</option>
+                                                            <option value="ET"
+                                                            >Ethiopia</option>
+                                                            <option value="FK"
+                                                            >Falkland Islands (Malvinas)</option>
+                                                            <option value="FO"
+                                                            >Faroe Islands</option>
+                                                            <option value="FJ"
+                                                            >Fiji</option>
+                                                            <option value="FI"
+                                                            >Finland</option>
+                                                            <option value="FR"
+                                                            >France</option>
+                                                            <option value="GF"
+                                                            >French Guiana</option>
+                                                            <option value="PF"
+                                                            >French Polynesia</option>
+                                                            <option value="TF"
+                                                            >French Southern Territories</option>
+                                                            <option value="GA"
+                                                            >Gabon</option>
+                                                            <option value="GM"
+                                                            >Gambia</option>
+                                                            <option value="GE"
+                                                            >Georgia</option>
+                                                            <option value="DE"
+                                                            >Germany</option>
+                                                            <option value="GH"
+                                                            >Ghana</option>
+                                                            <option value="GI"
+                                                            >Gibraltar</option>
+                                                            <option value="GR"
+                                                            >Greece</option>
+                                                            <option value="GL"
+                                                            >Greenland</option>
+                                                            <option value="GD"
+                                                            >Grenada</option>
+                                                            <option value="GP"
+                                                            >Guadeloupe</option>
+                                                            <option value="GU"
+                                                            >Guam</option>
+                                                            <option value="GT"
+                                                            >Guatemala</option>
+                                                            <option value="GG"
+                                                            >Guernsey</option>
+                                                            <option value="GN"
+                                                            >Guinea</option>
+                                                            <option value="GW"
+                                                            >Guinea-Bissau</option>
+                                                            <option value="GY"
+                                                            >Guyana</option>
+                                                            <option value="HT"
+                                                            >Haiti</option>
+                                                            <option value="HM"
+                                                            >Heard Island And Mcdonald Islands</option>
+                                                            <option value="VA"
+                                                            >Holy See (Vatican City State)</option>
+                                                            <option value="HN"
+                                                            >Honduras</option>
+                                                            <option value="HK"
+                                                            >Hong Kong</option>
+                                                            <option value="HU"
+                                                            >Hungary</option>
+                                                            <option value="IS"
+                                                            >Iceland</option>
+                                                            <option value="IN"
+                                                            >India</option>
+                                                            <option value="ID"
+                                                            >Indonesia</option>
+                                                            <option value="IR"
+                                                            >Iran, Islamic Republic Of</option>
+                                                            <option value="IQ"
+                                                            >Iraq</option>
+                                                            <option value="IE"
+                                                            >Ireland</option>
+                                                            <option value="IM"
+                                                            >Isle Of Man</option>
+                                                            <option value="IL"
+                                                            >Israel</option>
+                                                            <option value="IT"
+                                                            >Italy</option>
+                                                            <option value="JM"
+                                                            >Jamaica</option>
+                                                            <option value="JP"
+                                                            >Japan</option>
+                                                            <option value="JE"
+                                                            >Jersey</option>
+                                                            <option value="JO"
+                                                            >Jordan</option>
+                                                            <option value="KZ"
+                                                            >Kazakhstan</option>
+                                                            <option value="KE"
+                                                            >Kenya</option>
+                                                            <option value="KI"
+                                                            >Kiribati</option>
+                                                            <option value="KP"
+                                                            >Korea, Democratic People's Republic Of</option>
+                                                            <option value="KR"
+                                                            >Korea, Republic Of</option>
+                                                            <option value="KW"
+                                                            >Kuwait</option>
+                                                            <option value="KG"
+                                                            >Kyrgyzstan</option>
+                                                            <option value="LA"
+                                                            >Lao People's Democratic Republic</option>
+                                                            <option value="LV"
+                                                            >Latvia</option>
+                                                            <option value="LB"
+                                                            >Lebanon</option>
+                                                            <option value="LS"
+                                                            >Lesotho</option>
+                                                            <option value="LR"
+                                                            >Liberia</option>
+                                                            <option value="LY"
+                                                            >Libya</option>
+                                                            <option value="LI"
+                                                            >Liechtenstein</option>
+                                                            <option value="LT"
+                                                            >Lithuania</option>
+                                                            <option value="LU"
+                                                            >Luxembourg</option>
+                                                            <option value="MO"
+                                                            >Macao</option>
+                                                            <option value="MK"
+                                                            >Macedonia, The Former Yugoslav Republic Of</option>
+                                                            <option value="MG"
+                                                            >Madagascar</option>
+                                                            <option value="MW"
+                                                            >Malawi</option>
+                                                            <option value="MY"
+                                                            >Malaysia</option>
+                                                            <option value="MV"
+                                                            >Maldives</option>
+                                                            <option value="ML"
+                                                            >Mali</option>
+                                                            <option value="MT"
+                                                            >Malta</option>
+                                                            <option value="MH"
+                                                            >Marshall Islands</option>
+                                                            <option value="MQ"
+                                                            >Martinique</option>
+                                                            <option value="MR"
+                                                            >Mauritania</option>
+                                                            <option value="MU"
+                                                            >Mauritius</option>
+                                                            <option value="YT"
+                                                            >Mayotte</option>
+                                                            <option value="MX"
+                                                            >Mexico</option>
+                                                            <option value="FM"
+                                                            >Micronesia, Federated States Of</option>
+                                                            <option value="MD"
+                                                            >Moldova, Republic Of</option>
+                                                            <option value="MC"
+                                                            >Monaco</option>
+                                                            <option value="MN"
+                                                            >Mongolia</option>
+                                                            <option value="ME"
+                                                            >Montenegro</option>
+                                                            <option value="MS"
+                                                            >Montserrat</option>
+                                                            <option value="MA"
+                                                            >Morocco</option>
+                                                            <option value="MZ"
+                                                            >Mozambique</option>
+                                                            <option value="MM"
+                                                            >Myanmar</option>
+                                                            <option value="NA"
+                                                            >Namibia</option>
+                                                            <option value="NR"
+                                                            >Nauru</option>
+                                                            <option value="NP"
+                                                            >Nepal</option>
+                                                            <option value="NL"
+                                                            >Netherlands</option>
+                                                            <option value="NC"
+                                                            >New Caledonia</option>
+                                                            <option value="NZ"
+                                                            >New Zealand</option>
+                                                            <option value="NI"
+                                                            >Nicaragua</option>
+                                                            <option value="NE"
+                                                            >Niger</option>
+                                                            <option value="NG"
+                                                            >Nigeria</option>
+                                                            <option value="NU"
+                                                            >Niue</option>
+                                                            <option value="NF"
+                                                            >Norfolk Island</option>
+                                                            <option value="MP"
+                                                            >Northern Mariana Islands</option>
+                                                            <option value="NO"
+                                                            >Norway</option>
+                                                            <option value="OM"
+                                                            >Oman</option>
+                                                            <option value="PK"
+                                                            >Pakistan</option>
+                                                            <option value="PW"
+                                                            >Palau</option>
+                                                            <option value="PS"
+                                                            >Palestine, State Of</option>
+                                                            <option value="PA"
+                                                            >Panama</option>
+                                                            <option value="PG"
+                                                            >Papua New Guinea</option>
+                                                            <option value="PY"
+                                                            >Paraguay</option>
+                                                            <option value="PE"
+                                                            >Peru</option>
+                                                            <option value="PH"
+                                                            >Philippines</option>
+                                                            <option value="PN"
+                                                            >Pitcairn</option>
+                                                            <option value="PL"
+                                                            >Poland</option>
+                                                            <option value="PT"
+                                                            >Portugal</option>
+                                                            <option value="PR"
+                                                            >Puerto Rico</option>
+                                                            <option value="QA"
+                                                            >Qatar</option>
+                                                            <option value="RE"
+                                                            >Réunion</option>
+                                                            <option value="RO"
+                                                            >Romania</option>
+                                                            <option value="RU"
+                                                            >Russian Federation</option>
+                                                            <option value="RW"
+                                                            >Rwanda</option>
+                                                            <option value="BL"
+                                                            >Saint Barthélemy</option>
+                                                            <option value="SH"
+                                                            >Saint Helena, Ascension And Tristan Da Cunha</option>
+                                                            <option value="KN"
+                                                            >Saint Kitts And Nevis</option>
+                                                            <option value="LC"
+                                                            >Saint Lucia</option>
+                                                            <option value="MF"
+                                                            >Saint Martin (French Part)</option>
+                                                            <option value="PM"
+                                                            >Saint Pierre And Miquelon</option>
+                                                            <option value="VC"
+                                                            >Saint Vincent And The Grenadines</option>
+                                                            <option value="WS"
+                                                            >Samoa</option>
+                                                            <option value="SM"
+                                                            >San Marino</option>
+                                                            <option value="ST"
+                                                            >Sao Tome And Principe</option>
+                                                            <option value="SA"
+                                                            >Saudi Arabia</option>
+                                                            <option value="SN"
+                                                            >Senegal</option>
+                                                            <option value="RS"
+                                                            >Serbia</option>
+                                                            <option value="SC"
+                                                            >Seychelles</option>
+                                                            <option value="SL"
+                                                            >Sierra Leone</option>
+                                                            <option value="SG"
+                                                            >Singapore</option>
+                                                            <option value="SX"
+                                                            >Sint Maarten (Dutch Part)</option>
+                                                            <option value="SK"
+                                                            >Slovakia</option>
+                                                            <option value="SI"
+                                                            >Slovenia</option>
+                                                            <option value="SB"
+                                                            >Solomon Islands</option>
+                                                            <option value="SO"
+                                                            >Somalia</option>
+                                                            <option value="ZA"
+                                                            >South Africa</option>
+                                                            <option value="GS"
+                                                            >South Georgia And The South Sandwich Islands</option>
+                                                            <option value="SS"
+                                                            >South Sudan</option>
+                                                            <option value="ES"
+                                                            >Spain</option>
+                                                            <option value="LK"
+                                                            >Sri Lanka</option>
+                                                            <option value="SD"
+                                                            >Sudan</option>
+                                                            <option value="SR"
+                                                            >Suriname</option>
+                                                            <option value="SJ"
+                                                            >Svalbard And Jan Mayen</option>
+                                                            <option value="SZ"
+                                                            >Swaziland</option>
+                                                            <option value="SE"
+                                                            >Sweden</option>
+                                                            <option value="CH"
+                                                            >Switzerland</option>
+                                                            <option value="SY"
+                                                            >Syrian Arab Republic</option>
+                                                            <option value="TW"
+                                                            >Taiwan</option>
+                                                            <option value="TJ"
+                                                            >Tajikistan</option>
+                                                            <option value="TZ"
+                                                            >Tanzania, United Republic Of</option>
+                                                            <option value="TH"
+                                                            >Thailand</option>
+                                                            <option value="TL"
+                                                            >Timor-Leste</option>
+                                                            <option value="TG"
+                                                            >Togo</option>
+                                                            <option value="TK"
+                                                            >Tokelau</option>
+                                                            <option value="TO"
+                                                            >Tonga</option>
+                                                            <option value="TT"
+                                                            >Trinidad And Tobago</option>
+                                                            <option value="TN"
+                                                            >Tunisia</option>
+                                                            <option value="TR"
+                                                            >Turkey</option>
+                                                            <option value="TM"
+                                                            >Turkmenistan</option>
+                                                            <option value="TC"
+                                                            >Turks And Caicos Islands</option>
+                                                            <option value="TV"
+                                                            >Tuvalu</option>
+                                                            <option value="UG"
+                                                            >Uganda</option>
+                                                            <option value="UA"
+                                                            >Ukraine</option>
+                                                            <option value="AE"
+                                                            >United Arab Emirates</option>
+                                                            <option value="GB"
+                                                            >United Kingdom</option>
+                                                            <option value="US"
+                                                            >United States</option>
+                                                            <option value="UM"
+                                                            >United States Minor Outlying Islands</option>
+                                                            <option value="UY"
+                                                            >Uruguay</option>
+                                                            <option value="UZ"
+                                                            >Uzbekistan</option>
+                                                            <option value="VU"
+                                                            >Vanuatu</option>
+                                                            <option value="VE"
+                                                            >Venezuela, Bolivarian Republic Of</option>
+                                                            <option value="VN"
+                                                            >Viet Nam</option>
+                                                            <option value="VG"
+                                                            >Virgin Islands, British</option>
+                                                            <option value="VI"
+                                                            >Virgin Islands, U.S.</option>
+                                                            <option value="WF"
+                                                            >Wallis And Futuna</option>
+                                                            <option value="EH"
+                                                            >Western Sahara</option>
+                                                            <option value="YE"
+                                                            >Yemen</option>
+                                                            <option value="ZM"
+                                                            >Zambia</option>
+                                                            <option value="ZW"
+                                                            >Zimbabwe</option>
+                                                        </select>
+                                                        <div class="form-control-feedback invalid-feedback" id="id_error_country" >
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </div>
+
+                                            </fieldset>
+
+                                            <div id="fgroup_id_buttonar" class="form-group row  fitem femptylabel  " data-groupname="buttonar">
+                                            <div class="col-md-3">
+        <span class="float-sm-right text-nowrap">
+
+
+
+        </span>
+                                                <label class="col-form-label d-inline " for="fgroup_id_buttonar">
+
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9 form-inline felement" data-fieldtype="group">
+
+                                                <div class="form-group  fitem  " >
+                                                    <label class="col-form-label " for="id_submitbutton">
+
+
+
+                                                    </label>
+                                                    <span data-fieldtype="submit">
+        <input type="submit"
+               class="btn
+                        btn-primary
+
+
+                    "
+               name="submitbutton"
+               id="id_submitbutton"
+               value="Create my new account"
+        >
+    </span>
+                                                    <div class="form-control-feedback invalid-feedback" id="id_error_submitbutton" >
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group  fitem   btn-cancel" >
+                                                    <label class="col-form-label " for="id_cancel">
+
+
+
+                                                    </label>
+                                                    <span data-fieldtype="submit">
+        <input type="submit"
+               class="btn
+
+                        btn-secondary
+
+                    "
+               name="cancel"
+               id="id_cancel"
+               value="Cancel"
+               data-skip-validation="1" data-cancel="1" onclick="skipClientValidation = true; return true;" >
+    </span>
+                                                    <div class="form-control-feedback invalid-feedback" id="id_error_cancel" >
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-control-feedback invalid-feedback" id="fgroup_id_buttonar" >
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="fdescription required">There are required fields in this form marked <i class="icon fa fa-exclamation-circle text-danger fa-fw "  title="Required field" aria-label="Required field"></i>.</div>
+                                        </form>
+                                        <script>var skipClientValidation = false;</script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="footer_one  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-3 col-lg-3">
+                    <div class="footer_contact_widget  ">
+                        <h4>CONTACT</h4>
+                        <p>128 Itire Rd, Lawanson Street, Surulere </p>
+                        <p>Lagos, Nigeria.</p>
+                        <p>901 647 2503</p>
+                        <p>support@lampnets.com</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                    <div class="footer_company_widget  ">
+                        <h4>COMPANY</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Become a Teacher</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                    <div class="footer_program_widget  ">
+                        <h4>PROGRAMS</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Nanodegree Plus</a></li>
+                            <li><a href="#">Veterans</a></li>
+                            <li><a href="#">Georgia</a></li>
+                            <li><a href="#">Self-Driving Car</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                    <div class="footer_support_widget  ">
+                        <h4>SUPPORT</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Forums</a></li>
+                            <li><a href="#">Language Packs</a></li>
+                            <li><a href="#">Release Status</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-md-3 col-lg-3">
+                    <div class="footer_apps_widget  ">
+                        <h4>MOBILE</h4>
+                        <div class="app_grid">
+                            <button class="apple_btn btn-dark">
+<span class="icon">
+<span class="flaticon-apple"></span>
+</span>
+                                <span class="title">App Store</span>
+                                <span class="subtitle">Available now on the</span>
+                            </button>
+                            <button class="play_store_btn btn-dark">
+<span class="icon">
+<span class="flaticon-google-play"></span>
+</span>
+                                <span class="title">Google Play</span>
+                                <span class="subtitle">Get in on</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer_middle_area p0  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 pb15 pt15">
+                    <div class="logo-widget  home1    ">
+                        <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/1/theme_edumy/footerlogo1/1583195737/header-logo.png" alt="Edumy">
+                        <span>Edumy</span>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-5 col-lg-6 col-xl-6 pb25 pt25 brdr_left_right">
+                    <div class="footer_menu_widget">
+                        <ul>
+                            <li class="list-inline-item"><a href="#">Home</a></li>
+                            <li class="list-inline-item"><a href="#">Privacy</a></li>
+                            <li class="list-inline-item"><a href="#">Terms</a></li>
+                            <li class="list-inline-item"><a href="#">Sitemap</a></li>
+                            <li class="list-inline-item"><a href="#">Purchase</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 col-xl-4 pb15 pt15">
+                    <div class="footer_social_widget mt15">
+                        <ul>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer_bottom_area pt25 pb25  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="copyright-widget text-center">
+                        <p>Copyright © 2020 Lampnet Solutions. All Rights Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <a class="scrollToHome" href="#"><i class="flaticon-up-arrow-1"></i></a>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/jquery-3.3.1.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/jquery-migrate-3.0.0.min.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/cocoon.preprocess.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/jquery.mmenu.all.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/ace-responsive-menu.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/bootstrap-select.min.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/isotop.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/snackbar.min.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/simplebar.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/parallax.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/scrollto.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/jquery-scrolltofixed-min.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/jquery.counterup.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/wow.min.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/progressbar.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/slider.js"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/timepicker.js"></script>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
+    <script src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/javascript/script.js"></script>
+    <script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/requirejs.php/1583195737/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+    <script type="text/javascript" src="https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/requirejs/require.min.js"></script>
+    <script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://demo.createdbycocoon.com/moodle/edumy/1/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("en",{
+ "Audio Player": "Audio Player",
+ "Video Player": "Video Player",
+ "Play": "Play",
+ "Pause": "Pause",
+ "Replay": "Replay",
+ "Current Time": "Current Time",
+ "Duration Time": "Duration Time",
+ "Remaining Time": "Remaining Time",
+ "Stream Type": "Stream Type",
+ "LIVE": "LIVE",
+ "Loaded": "Loaded",
+ "Progress": "Progress",
+ "Progress Bar": "Progress Bar",
+ "progress bar timing: currentTime={1} duration={2}": "{1} of {2}",
+ "Fullscreen": "Fullscreen",
+ "Non-Fullscreen": "Non-Fullscreen",
+ "Mute": "Mute",
+ "Unmute": "Unmute",
+ "Playback Rate": "Playback Rate",
+ "Subtitles": "Subtitles",
+ "subtitles off": "subtitles off",
+ "Captions": "Captions",
+ "captions off": "captions off",
+ "Chapters": "Chapters",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions off",
+ "Audio Track": "Audio Track",
+ "Volume Level": "Volume Level",
+ "You aborted the media playback": "You aborted the media playback",
+ "A network error caused the media download to fail part-way.": "A network error caused the media download to fail part-way.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "The media could not be loaded, either because the server or network failed or because the format is not supported.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.",
+ "No compatible source was found for this media.": "No compatible source was found for this media.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "The media is encrypted and we do not have the keys to decrypt it.",
+ "Play Video": "Play Video",
+ "Close": "Close",
+ "Close Modal Dialog": "Close Modal Dialog",
+ "Modal Window": "Modal Window",
+ "This is a modal window": "This is a modal window",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "This modal can be closed by pressing the Escape key or activating the close button.",
+ ", opens captions settings dialog": ", opens captions settings dialog",
+ ", opens subtitles settings dialog": ", opens subtitles settings dialog",
+ ", opens descriptions settings dialog": ", opens descriptions settings dialog",
+ ", selected": ", selected",
+ "captions settings": "captions settings",
+ "subtitles settings": "subititles settings",
+ "descriptions settings": "descriptions settings",
+ "Text": "Text",
+ "White": "White",
+ "Black": "Black",
+ "Red": "Red",
+ "Green": "Green",
+ "Blue": "Blue",
+ "Yellow": "Yellow",
+ "Magenta": "Magenta",
+ "Cyan": "Cyan",
+ "Background": "Background",
+ "Window": "Window",
+ "Transparent": "Transparent",
+ "Semi-Transparent": "Semi-Transparent",
+ "Opaque": "Opaque",
+ "Font Size": "Font Size",
+ "Text Edge Style": "Text Edge Style",
+ "None": "None",
+ "Raised": "Raised",
+ "Depressed": "Depressed",
+ "Uniform": "Uniform",
+ "Dropshadow": "Dropshadow",
+ "Font Family": "Font Family",
+ "Proportional Sans-Serif": "Proportional Sans-Serif",
+ "Monospace Sans-Serif": "Monospace Sans-Serif",
+ "Proportional Serif": "Proportional Serif",
+ "Monospace Serif": "Monospace Serif",
+ "Casual": "Casual",
+ "Script": "Script",
+ "Small Caps": "Small Caps",
+ "Reset": "Reset",
+ "restore all settings to the default values": "restore all settings to the default values",
+ "Done": "Done",
+ "Caption Settings Dialog": "Caption Settings Dialog",
+ "Beginning of dialog window. Escape will cancel and close the window.": "Beginning of dialog window. Escape will cancel and close the window.",
+ "End of dialog window.": "End of dialog window."
+});
+
+    });
+});;
+
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
+M.util.js_pending('theme_boost/drawer');
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+  M.util.js_complete('theme_boost/drawer');
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_username");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_passwordpolicyinfo");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_password");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_email");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_email2");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_firstname");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_lastname");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_city");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_country");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_submitbutton");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("id_cancel");
+});
+;
+
+require(['theme_boost/form-display-errors'], function(module) {
+    module.enhance("fgroup_id_buttonar");
+});
+;
+
+
+require(["core/event", "jquery"], function(Event, $) {
+
+    function qf_errorHandler(element, _qfMsg, escapedName) {
+        var event = $.Event(Event.Events.FORM_FIELD_VALIDATION);
+        $(element).trigger(event, _qfMsg);
+        if (event.isDefaultPrevented()) {
+            return _qfMsg == '';
+        } else {
+            // Legacy mforms.
+            var div = element.parentNode;
+
+            if ((div == undefined) || (element.name == undefined)) {
+                // No checking can be done for undefined elements so let server handle it.
+                return true;
+            }
+
+            if (_qfMsg != '') {
+                var errorSpan = document.getElementById('id_error_' + escapedName);
+                if (!errorSpan) {
+                    errorSpan = document.createElement("span");
+                    errorSpan.id = 'id_error_' + escapedName;
+                    errorSpan.className = "error";
+                    element.parentNode.insertBefore(errorSpan, element.parentNode.firstChild);
+                    document.getElementById(errorSpan.id).setAttribute('TabIndex', '0');
+                    document.getElementById(errorSpan.id).focus();
+                }
+
+                while (errorSpan.firstChild) {
+                    errorSpan.removeChild(errorSpan.firstChild);
+                }
+
+                errorSpan.appendChild(document.createTextNode(_qfMsg.substring(3)));
+
+                if (div.className.substr(div.className.length - 6, 6) != " error"
+                        && div.className != "error") {
+                    div.className += " error";
+                    linebreak = document.createElement("br");
+                    linebreak.className = "error";
+                    linebreak.id = 'id_error_break_' + escapedName;
+                    errorSpan.parentNode.insertBefore(linebreak, errorSpan.nextSibling);
+                }
+
+                return false;
+            } else {
+                var errorSpan = document.getElementById('id_error_' + escapedName);
+                if (errorSpan) {
+                    errorSpan.parentNode.removeChild(errorSpan);
+                }
+                var linebreak = document.getElementById('id_error_break_' + escapedName);
+                if (linebreak) {
+                    linebreak.parentNode.removeChild(linebreak);
+                }
+
+                if (div.className.substr(div.className.length - 6, 6) == " error") {
+                    div.className = div.className.substr(0, div.className.length - 6);
+                } else if (div.className == "error") {
+                    div.className = "";
+                }
+
+                return true;
+            } // End if.
+        } // End if.
+    } // End function.
+
+    function validate_login_signup_form_username(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['username'].value;
+  if (value == '' && !errFlag['username']) {
+    errFlag['username'] = true;
+    _qfMsg = _qfMsg + '\n - Missing username';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_username').addEventListener('blur', function(ev) {
+        validate_login_signup_form_username(ev.target, 'username')
+    });
+    document.getElementById('id_username').addEventListener('change', function(ev) {
+        validate_login_signup_form_username(ev.target, 'username')
+    });
+
+    function validate_login_signup_form_password(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['password'].value;
+  if (value == '' && !errFlag['password']) {
+    errFlag['password'] = true;
+    _qfMsg = _qfMsg + '\n - Missing password';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_password').addEventListener('blur', function(ev) {
+        validate_login_signup_form_password(ev.target, 'password')
+    });
+    document.getElementById('id_password').addEventListener('change', function(ev) {
+        validate_login_signup_form_password(ev.target, 'password')
+    });
+
+    function validate_login_signup_form_email(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['email'].value;
+  if (value == '' && !errFlag['email']) {
+    errFlag['email'] = true;
+    _qfMsg = _qfMsg + '\n - Missing email address';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_email').addEventListener('blur', function(ev) {
+        validate_login_signup_form_email(ev.target, 'email')
+    });
+    document.getElementById('id_email').addEventListener('change', function(ev) {
+        validate_login_signup_form_email(ev.target, 'email')
+    });
+
+    function validate_login_signup_form_email2(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['email2'].value;
+  if (value == '' && !errFlag['email2']) {
+    errFlag['email2'] = true;
+    _qfMsg = _qfMsg + '\n - Missing email address';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_email2').addEventListener('blur', function(ev) {
+        validate_login_signup_form_email2(ev.target, 'email2')
+    });
+    document.getElementById('id_email2').addEventListener('change', function(ev) {
+        validate_login_signup_form_email2(ev.target, 'email2')
+    });
+
+    function validate_login_signup_form_firstname(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['firstname'].value;
+  if (value == '' && !errFlag['firstname']) {
+    errFlag['firstname'] = true;
+    _qfMsg = _qfMsg + '\n - Missing given name';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_firstname').addEventListener('blur', function(ev) {
+        validate_login_signup_form_firstname(ev.target, 'firstname')
+    });
+    document.getElementById('id_firstname').addEventListener('change', function(ev) {
+        validate_login_signup_form_firstname(ev.target, 'firstname')
+    });
+
+    function validate_login_signup_form_lastname(element, escapedName) {
+      if (undefined == element) {
+         //required element was not found, then let form be submitted without client side validation
+         return true;
+      }
+      var value = '';
+      var errFlag = new Array();
+      var _qfGroups = {};
+      var _qfMsg = '';
+      var frm = element.parentNode;
+      if ((undefined != element.name) && (frm != undefined)) {
+          while (frm && frm.nodeName.toUpperCase() != "FORM") {
+            frm = frm.parentNode;
+          }
+          value = frm.elements['lastname'].value;
+  if (value == '' && !errFlag['lastname']) {
+    errFlag['lastname'] = true;
+    _qfMsg = _qfMsg + '\n - Missing surname';
+  }
+
+          return qf_errorHandler(element, _qfMsg, escapedName);
+      } else {
+        //element name should be defined else error msg will not be displayed.
+        return true;
+      }
+    }
+
+    document.getElementById('id_lastname').addEventListener('blur', function(ev) {
+        validate_login_signup_form_lastname(ev.target, 'lastname')
+    });
+    document.getElementById('id_lastname').addEventListener('change', function(ev) {
+        validate_login_signup_form_lastname(ev.target, 'lastname')
+    });
+
+
+    function validate_login_signup_form() {
+      if (skipClientValidation) {
+         return true;
+      }
+      var ret = true;
+
+      var frm = document.getElementById('mform1_kA2OUJUSNXRjLgq')
+      var first_focus = false;
+
+      ret = validate_login_signup_form_username(frm.elements['username'], 'username') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_username'});
+            document.getElementById('id_error_username').focus();
+        });
+      }
+
+      ret = validate_login_signup_form_password(frm.elements['password'], 'password') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_password'});
+            document.getElementById('id_error_password').focus();
+        });
+      }
+
+      ret = validate_login_signup_form_email(frm.elements['email'], 'email') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_email'});
+            document.getElementById('id_error_email').focus();
+        });
+      }
+
+      ret = validate_login_signup_form_email2(frm.elements['email2'], 'email2') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_email2'});
+            document.getElementById('id_error_email2').focus();
+        });
+      }
+
+      ret = validate_login_signup_form_firstname(frm.elements['firstname'], 'firstname') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_firstname'});
+            document.getElementById('id_error_firstname').focus();
+        });
+      }
+
+      ret = validate_login_signup_form_lastname(frm.elements['lastname'], 'lastname') && ret;
+      if (!ret && !first_focus) {
+        first_focus = true;
+        Y.use('moodle-core-event', function() {
+            Y.Global.fire(M.core.globalEvents.FORM_ERROR, {formid: 'mform1_kA2OUJUSNXRjLgq',
+                                                           elementid: 'id_error_lastname'});
+            document.getElementById('id_error_lastname').focus();
+        });
+      }
+;
+      return ret;
+    }
+
+    var form = $(document.getElementById('mform1_kA2OUJUSNXRjLgq')).closest('form');
+    form.on(M.core.event.FORM_SUBMIT_AJAX, function() {
+        try {
+            var myValidator = validate_login_signup_form;
+        } catch(e) {
+            return true;
+        }
+        if (myValidator) {
+            myValidator();
+        }
+    });
+
+    document.getElementById('mform1_kA2OUJUSNXRjLgq').addEventListener('submit', function(ev) {
+        try {
+            var myValidator = validate_login_signup_form;
+        } catch(e) {
+            return true;
+        }
+        if (typeof window.tinyMCE !== 'undefined') {
+            window.tinyMCE.triggerSave();
+        }
+        if (!myValidator()) {
+            ev.preventDefault();
+        }
+    });
+
+});
+;
+M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(1, []); M.util.js_complete('core/notification');});;
+M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"trace"}); M.util.js_complete('core/log');});;
+M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+    <script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","yes":"Yes","no":"No","cancel":"Cancel","changesmadereallygoaway":"You have made changes. Are you sure you want to navigate away and lose your changes?","collapseall":"Collapse all","expandall":"Expand all","confirm":"Confirm","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmdeletecomments":"You are about to delete comments, are you sure?","confirmation":"Confirmation"}};
+//]]>
+</script>
+    <script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+M.util.help_popups.setup(Y);
+Y.use("moodle-core-formchangechecker",function() {M.core_formchangechecker.init({"formid":"mform1_kA2OUJUSNXRjLgq","initialdirtystate":false});
+});
+Y.use("moodle-form-shortforms",function() {M.form.shortforms({"formid":"mform1_kA2OUJUSNXRjLgq"});
+});
+ M.util.js_pending('random5eec7c623d3be12'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5eec7c623d3be12'); });
+})();
+//]]>
+</script>
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+
+////

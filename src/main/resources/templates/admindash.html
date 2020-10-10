@@ -1,0 +1,678 @@
+
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+
+      xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Admin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/images/logouba.jpg">
+
+    <!-- Master Stylesheet [If you remove this CSS file, your file will be broken undoubtedly.] -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet"th:href="@{/assets/css/bootstrap.css}">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet"th:href="@{/assets/css/bootstrap.min.css}">
+    <link href="../static/css/styles.css" rel="stylesheet"th:href="@{/assets/css/styles.css}">
+    <link href="../static/css/owl.carousel.min.css" rel="stylesheet"th:href="@{/assets/css/owl.carousel.min.css}">
+    <link href="../static/css/animate.css" rel="stylesheet"th:href="@{/assets/css/animate.css}">
+    <link href="../static/css/nice-select.css" rel="stylesheet"th:href="@{/assets/css/nice-select.css}">
+    <link href="../static/css/jquery-ui.min.css" rel="stylesheet"th:href="@{/assets/css/jquery-ui.min.css}">
+    <link href="../static/css/themify-icons.css" rel="stylesheet"th:href="@{/assets/css/themify-icons.css}">
+    <link href="../static/css/boxicons.min.css" rel="stylesheet"th:href="@{/assets/css/boxicons.min.css}">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.9/typicons.css">
+    <link rel="stylesheet" href="path/to/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="path/to/pe-icon-7-stroke/css/styling.min.css">
+    <link href="../static/css/styling.min.css" rel="stylesheet"th:href="@{/assets/css/styling.min.css}">
+    <link href="../static/css/et-line.css" rel="stylesheet"th:href="@{/assets/css/et-line.css}">
+    <link href="../static/css/boxicons.css" rel="stylesheet"th:href="@{/assets/css/boxicons.css}">
+</head>
+
+<body>
+<!-- Preloader Start -->
+<div id="preloader">
+    <div class="preload-content">
+        <div id="hasro-load"></div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+<!-- ======================================
+******* Page Wrapper Area Start **********
+======================================= -->
+<div class="ecaps-page-wrapper">
+    <!-- Sidemenu Area -->
+    <div class="ecaps-sidemenu-area">
+        <!-- Desktop Logo -->
+        <div class="ecaps-logo">
+            <a href="index.html"><img class="desktop-logo" width="200px" src="../static/img/UBA.png"  th:src="@{/images/UBA.png}" alt="Desktop Logo"> <img class="small-logo"  src="../static/img/UBA.png"  th:src="@{/images/UBA.png}" alt="Mobile Logo"></a>
+        </div>
+
+        <!-- Side Nav -->
+        <div class="ecaps-sidenav" id="ecapsSideNav">
+            <!-- Side Menu Area -->
+            <div class="side-menu-area">
+                <!-- Sidebar Menu -->
+                <nav>
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="active"><a href="admindash" th:href="@{/admindash}"><img src="images/forny/bxs-dashboard.svg" style="color:white; background-color:white;"><span style="color:white;">&nbsp;&nbsp;Dashboard</span></a></li>
+                        <li class="treeview">
+                            <a href="javascript:void(0)"><img src="images/forny/bxs-user.svg" style="color:white; background-color:white;"> <span style="color:white;">&nbsp;&nbsp;User Manage</span> <i class="fa fa-angle-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="adminmentor" th:href="@{/adminmentor}">Mentor</a></li>
+                                <li><a href="adminmentee" th:href="@{/adminmentee}">Mentee</a></li>
+                                <li><a href="adminmentee" th:href="@{/menteetomentor}">Ladies Mentees</a></li>
+                                <li><a href="menmenteetomentor" th:href="@{/menmenteetomentor}">General Mentees</a></li>
+                                <li><a href="menteeonboarding.html" th:href="@{/menteeonboarding}"> On-boarding</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="treeview">
+                            <a href="javascript:void(0)"><img src="images/forny/bx-mail-send.svg" style="color:white; background-color:white;"> <span style="color:white;">&nbsp;&nbsp;Email</span> <i class="fa fa-angle-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="mail-inbox.html">Inbox</a></li>
+                                <li><a href="mail-view.html">Mail View</a></li>
+                                <li><a href="compose-mail.html">Compose Mail</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="treeview">
+                            <a href="javascript:void(0)"><img src="images/forny/bx-data.svg" style="color:white; background-color:white;"><span style="color:white;">&nbsp;&nbsp;DataTables</span> <i class="fa fa-angle-right"></i></a>
+                            <ul class="treeview-menu">
+                                <li><a href="basic-table.html">Basic Table</a></li>
+                                <li><a href="filter-table.html">Filter Table</a></li>
+                                <li><a href="data-table.html">Data Table</a></li>
+                                <li><a href="price-table.html">Price Table</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="ecaps-page-content">
+        <!-- Top Header Area -->
+        <header class="top-header-area d-flex align-items-center justify-content-between">
+            <div class="left-side-content-area d-flex align-items-center">
+                <!-- Mobile Logo -->
+                <div class="mobile-logo mr-3 mr-sm-4">
+                    <a href="index.html"><img src="images/forny/small-logo.png" alt="Mobile Logo"></a>
+                </div>
+
+                <!-- Triggers -->
+                <div class="ecaps-triggers mr-1 mr-sm-3">
+                    <div class="menu-collasped" id="menuCollasped">
+                        <img src="images/forny/menu-alt-left-regular-24.png">
+                    </div>
+                    <div class="mobile-menu-open" id="mobileMenuOpen">
+                        <i class='bx bx-menu'></i>
+                    </div>
+                </div>
+
+                <!-- Left Side Nav -->
+                <ul class="left-side-navbar d-flex align-items-center">
+                    <li class="hide-phone app-search">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <span><img src="images/forny/bx-search-alt.svg"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="right-side-navbar d-flex align-items-center justify-content-end">
+                <!-- Mobile Trigger -->
+                <div class="right-side-trigger" id="rightSideTrigger">
+                    <i class='bx bx-menu-alt-right'></i>
+                </div>
+
+                <!-- Top Bar Nav -->
+                <ul class="right-side-content d-flex align-items-center">
+                    <li class="nav-item dropdown">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-thumb-cu"><img src="images/forny/NIGERIA-1.jpg" height="76px" width="128px" alt=""></span></button>
+                        <div class="dropdown-menu language-dropdown dropdown-menu-right">
+                            <a href="#" class="dropdown-item mb-15"><img src="images/forny/l5.jpg" alt="Image"> <span>USA</span></a>
+                            <a href="#" class="dropdown-item mb-15"><img src="images/forny/l2.jpg" alt="Image"> <span>German</span></a>
+                            <a href="#" class="dropdown-item mb-15"><img src="images/forny/l3.jpg" alt="Image"> <span>Italian</span></a>
+                            <a href="#" class="dropdown-item"><img src="images/forny/l4.jpg" alt="Image"> <span>Russian</span></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <div class="dropdown d-none d-lg-inline-block ml-1 show">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bx bx-customize"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                <div class="px-lg-2">
+                                    <div class="row no-gutters">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/18.jpg" alt="image">
+                                                <span>Motriza</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/19.jpg" alt="image">
+                                                <span>Jisladtd</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/20.jpg" alt="image">
+                                                <span>Dribbble</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="row no-gutters">
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/13.png" alt="image">
+                                                <span>GitHub</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/14.png" alt="image">
+                                                <span>Google</span>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a class="dropdown-icon-item" href="#">
+                                                <img src="images/forny/17.jpg" alt="image">
+                                                <span>Dribbble</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-bell bx-tada'></i> <span class="active-status"></span></button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <!-- Top Notifications Area -->
+                            <div class="top-notifications-area">
+                                <!-- Heading -->
+                                <div class="notifications-heading">
+                                    <div class="heading-title">
+                                        <h6>Notifications</h6>
+                                    </div>
+                                    <span>07 New</span>
+                                </div>
+
+                                <div class="notifications-box" id="notificationsBox">
+                                    <a href="#" class="dropdown-item">
+                                        <i class='bx bx-shopping-bag'></i>
+                                        <div>
+                                            <span>Your order is placed</span>
+                                            <p class="mb-0 font-12">Consectetur adipisicing elit. Ipsa, porro!</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="dropdown-item">
+                                        <img src="img/member-img/mail-1.jpg" alt="">
+                                        <div>
+                                            <span>Haslina Obeta</span>
+                                            <p class="mb-0 font-12">Consectetur adipisicing elit. Ipsa, porro!</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="dropdown-item">
+                                        <i class='bx bx-atom bg-success'></i>
+                                        <div>
+                                            <span>Your order is Dollar</span>
+                                            <p class="mb-0 font-12">Consectetur adipisicing elit. Ipsa, porro!</p>
+                                        </div>
+                                    </a>
+
+                                    <a href="#" class="dropdown-item">
+                                        <img src="img/member-img/mail-3.jpg" alt="">
+                                        <div>
+                                            <span>Your order is placed</span>
+                                            <p class="mb-0 font-12">Consectetur adipisicing elit. Ipsa, porro!</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/member-img/contact-2.jpg" alt=""></button>
+                        <div class="dropdown-menu profile dropdown-menu-right">
+                            <!-- User Profile Area -->
+                            <div class="user-profile-area">
+                                <a href="#" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> My profile</a>
+                                <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>
+                                <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a>
+                                <a href="#" class="dropdown-item"><i class="bx bx-power-off font-15" aria-hidden="true"></i> Sign-out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card box-margin">
+                            <div class="card-body">
+                                <div class="float-right"><i class="fa fa-id-badge text-danger font-30"></i></div><span class="badge badge-danger">Mentor</span>
+                                <h4 class="my-3"><span th:text="${{mentorcount}}"   style=" padding:5px;"></span></h4>
+                                <p class="mb-0"><span class="text-success"><i class="fa fa-level-up mr-1" aria-hidden="true"></i><span th:text="${{permentorcount}}" style=" padding:5px;"></span>%</span>Percentage of Approved Mentors</p>
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card box-margin">
+                            <div class="card-body">
+                                <div class="float-right"><i class="fa fa-bar-chart-o font-30"></i></div><span class="badge badge-secondary">xxxxxx</span>
+                                <h4 class="my-3"><span th:text="${{sum}}"   style=" padding:5px;"></span></h4>
+                                <p class="mb-0"><span class="text-danger"><i class="fa fa-level-down mr-1" aria-hidden="true"></i>100%</span> Percentage of Mentee</p>
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card box-margin">
+                            <div class="card-body">
+                                <div class="float-right"><i class="fa fa-codiepie text-warning font-30"></i></div><span class="badge badge-warning">Mentee</span>
+                                <h4 class="my-3"><span th:text="${{menteecount}}"   style=" padding:5px;"></span></h4>
+                                <p class="mb-0"><span class="text-danger"><i class="fa fa-level-down mr-1" aria-hidden="true"></i><span th:text="${{permenteecount}}" style=" padding:5px;"></span>%</span> Percentage of Approved Mentees</p>
+                            </div>
+                            <!--end card-body-->
+                        </div>
+                        <!--end card-->
+                    </div>
+                    <!--end col-->
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 box-margin height-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title mb-1">Ladies Connect Overview</h4>
+                                <p class="mb-30">In 30 days sales of product subscription. <a href="#">See details</a></p>
+                                <h2>Form Collection Still Ongoing....</h2>
+                                <!--  Chart -->
+                                <div class="dashboard-area">
+                                    <div id="apexChartD"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 box-margin height-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Sessions By Mentor/Mentee</h4>
+                                <div id="chartSummary1" class="chartSummary"></div>
+                                <div class="row px-4">
+                                    <div class="col-4 mt-15">
+                                        <h6 class="font-13 mb-1">Search</h6>
+                                        <div class="d-flex align-items-center">
+                                            <h5 class="mb-0">120 <small class="text-muted">25%</small></h5>
+                                        </div>
+                                    </div><!-- col -->
+                                    <div class="col-4 mt-15">
+                                        <h6 class="font-13 mb-1">Email</h6>
+                                        <div class="d-flex align-items-center">
+                                            <h5 class="mb-0">987 <small class="text-muted">20%</small></h5>
+                                        </div>
+                                    </div><!-- col -->
+                                    <div class="col-4 mt-15">
+                                        <h6 class="font-13 mb-1">Social</h6>
+                                        <div class="d-flex align-items-center">
+                                            <h5 class="mb-0">154 <small class="text-muted">25%</small></h5>
+                                        </div>
+                                    </div><!-- col -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 box-margin height-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Web Analytics</h5>
+                                <div class="transaction-area">
+                                    <div class="d-flex flex-row list-group-item align-items-center justify-content-between">
+                                        <div class="media d-flex justify-content-center align-items-center">
+                                            <div class="icon-section bg-primary-soft">
+                                                <i class="fa fa-file-code-o"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">New Users</h6>
+                                                <p class="mb-0">6 June 2019 10:25 AM</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="amount txt-gray-5">
+                                            <p class="mb-0 font-weight-bold">57,0000</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row list-group-item align-items-center justify-content-between">
+                                        <div class="media d-flex justify-content-center align-items-center">
+                                            <div class="icon-section bg-danger-soft">
+                                                <i class="fa fa-newspaper-o"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Page Views</h6>
+                                                <p class="mb-0">9 July 2019 03:43 Pm</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="amount txt-gray-5">
+                                            <p class="mb-0 font-weight-bold">79,496</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row list-group-item align-items-center justify-content-between">
+                                        <div class="media d-flex justify-content-center align-items-center">
+                                            <div class="icon-section bg-success-soft">
+                                                <i class="fa fa-clone"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Page Sessions</h6>
+                                                <p class="mb-0">6 April 2019 02:34 PM</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="amount txt-gray-5">
+                                            <p class="mb-0 font-weight-bold">47,381</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-row list-group-item align-items-center justify-content-between">
+                                        <div class="media d-flex justify-content-center align-items-center">
+                                            <div class="icon-section bg-danger-soft">
+                                                <i class="icon-wallet"></i>
+                                            </div>
+                                            <div class="media-body">
+                                                <h6 class="mb-1">Click Through</h6>
+                                                <p class="mb-0">22 January 2019 07:21 AM</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="amount txt-gray-5">
+                                            <p class="mb-0 font-weight-bold">4,76,8294</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chart Starts-->
+                    <div class="col-lg-7 box-margin height-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Device Sessions</h4>
+                                <div id="success-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card mb-30">
+                            <div class="card-body pb-0">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="card-title mb-0">Mentor List</h6>
+                                    <button type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
+                                </div>
+                            </div>
+                            <div class="card-body pb-0 px-0">
+                                <div class="table-responsive order-stats">
+                                    <table class="table table-nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>Empl ID</th>
+                                            <th>Employee Name</th>
+                                            <th>Grade</th>
+                                            <th>Email Address</th>
+                                            <th>Phone</th>
+                                            <th>Department</th>
+                                            <th>Years of Work</th>
+                                            <th>Mentor's session</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <div th:each="mentorprodInfo : ${mentorpaginationProducts}">
+                                        <tr>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.EmplID}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.surname}}"   style=" padding:5px;"></span>
+                                                <span>&nbsp;&nbsp;</span>
+                                                <span th:text="${{mentorprodInfo.firstname}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.grade}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.email}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.phone}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.department}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.yearsofwork}}"   style=" padding:5px;"></span>
+                                            </td>
+                                            <td>
+                                                <span th:text="${{mentorprodInfo.mentorsession}}"   style=" padding:5px;"></span>
+                                            </td>
+                                        </tr>
+                                        </div>
+                                        <div class="page-navigator" th:if="${mentorpaginationProductsres.totalPages > 1}">
+                                            <th:block th:each="page : ${mentorpaginationProductsnav}">
+
+                                                <a th:href="@{|/admindash?page=${page}|}" th:if="${page != -1}"
+                                                   class="nav-item" th:utext="${page}"></a>
+
+                                                <span class="nav-item" th:if="${page == -1}"> ... </span>
+
+                                            </th:block>
+                                        </div>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card mb-30">
+                            <div class="card-body pb-0">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h6 class="card-title mb-0">Mentee List</h6>
+                                    <button type="button" class="btn btn-primary waves-effect btn-sm waves-light float-right" data-toggle="modal" data-animation="bounce" data-target=".bs-example-modal-lg">+ Add New</button>
+                                </div>
+                            </div>
+                            <div class="card-body pb-0 px-0">
+                                <div class="table-responsive order-stats">
+                                    <table class="table table-nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>Empl ID</th>
+                                            <th>Employee Name</th>
+                                            <th>Grade</th>
+                                            <th>Email Address</th>
+                                            <th>Phone</th>
+                                            <th>Department</th>
+                                            <th>Years of Work</th>
+                                            <th>Mentor's session</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <div th:each="menteeprodInfo : ${menteepaginationProducts}">
+                                            <tr>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.EmplID}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.surname}}"   style=" padding:5px;"></span>
+                                                    <span>&nbsp;&nbsp;</span>
+                                                    <span th:text="${{menteeprodInfo.firstname}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.grade}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.email}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.phone}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.department}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.yearsofwork}}"   style=" padding:5px;"></span>
+                                                </td>
+                                                <td>
+                                                    <span th:text="${{menteeprodInfo.menteesession}}"   style=" padding:5px;"></span>
+                                                </td>
+                                            </tr>
+                                        </div>
+                                        <div class="page-navigator" th:if="${menteepaginationProductsres.totalPages > 1}">
+                                            <!--<th:block th:each="page : ${menteepaginationProductsnav}">-->
+
+                                                <!--<a th:href="@{|/admindash?page=${page}|}" th:if="${page != -1}"-->
+                                                   <!--class="nav-item" th:utext="${page}"></a>-->
+
+                                                <!--<span class="nav-item" th:if="${page == -1}"> ... </span>-->
+
+                                            <!--</th:block>-->
+                                        </div>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-modal="false">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title mt-0 font-16" id="myLargeModalLabel">Add New Customer</h5><button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label for="LeadName">Name</label> <input type="text" class="form-control" id="LeadName" required=""></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label for="LeadEmail">Email</label> <input type="email" class="form-control" id="LeadEmail" required=""></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label for="PhoneNo">Phone No</label> <input type="text" class="form-control" id="PhoneNo" required=""></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label for="status-select" class="mr-2">Country</label> <select class="custom-select" id="status-select">
+                                                <option selected="">Select</option>
+                                                <option value="1">India</option>
+                                                <option value="2">USA</option>
+                                                <option value="3">Japan</option>
+                                                <option value="4">China</option>
+                                                <option value="5">Germany</option>
+                                            </select></div>
+                                        </div>
+                                    </div><button type="button" class="btn btn-sm btn-primary">Save</button> <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+
+            </div>
+
+            <!-- Footer Area -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Footer Area -->
+                        <footer class="footer-area d-flex align-items-center flex-wrap">
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p>Created by <a href="#">Theme-zome</a></p>
+                            </div>
+                            <!-- Footer Nav -->
+                            <ul class="footer-nav d-flex align-items-center">
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Purchase</a></li>
+                            </ul>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ======================================
+********* Page Wrapper Area End ***********
+======================================= -->
+
+<!-- Must needed plugins to the run this Template -->
+<script src="../static/js/jquery.min.js"   th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{/bootstrap.min.js}"></script>
+<script src="../static/js/popper.min.js"   th:src="@{/js/popper.min.js}"></script>
+<script src="../static/js/bundle.js"   th:src="@{/js/bundle.js}"></script>
+<script src="../static/js/setting.js"   th:src="@{/js/setting.js}"></script>
+<script src="../static/js/fullscreen.js"   th:src="@{/js/fullscreen.js}"></script>
+
+<!-- Active JS -->
+<script src="../static/js/active.js"   th:src="@{/js/active.js}"></script>
+
+<script src="../static/js/ammap.min.js"   th:src="@{/js/ammap.min.js}"></script>
+<script src="../static/js/radar.js"   th:src="@{/js/radar.js}"></script>
+<script src="../static/js/widget-page-chart-active.js"   th:src="@{/js/widget-page-chart-active.js}"></script>
+<script src="../static/js/apexchart.min.js"   th:src="@{/js/apexchart.min.js}"></script>
+<script src="../static/js/dashboard-active.js"   th:src="@{/js/dashboard-active.js}"></script>
+
+
+</body>
+
+</html>

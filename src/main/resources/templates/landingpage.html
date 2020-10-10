@@ -1,0 +1,1716 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <title>LIT - LMS</title>
+    <link rel="shortcut icon" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/image.php/edumy/theme/1583195737/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="moodle, Edumy" />
+    <link rel="stylesheet" type="text/css" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.css" />
+    <script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script>
+    <link rel="stylesheet" type="text/css" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/styles.php/edumy/1583195737_1/all" />
+    <link href="../static/assets/css/litlms.css" rel="stylesheet"th:href="@{/assets/css/litlms.css}">
+    <link href="../static/assets/css/yui-moodlesimple.css" rel="stylesheet"th:href="@{/assets/css/yui-moodlesimple.css}">
+    <script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1","sesskey":"Z0SKrx6VG0","themerev":"1583195737","slasharguments":1,"theme":"edumy","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1583195737","admin":"admin","svgicons":true,"usertimezone":"Europe\/London","contextid":2,"developerdebug":true};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":true,"base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","combine":true,"filter":"RAW","insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?m\/1583195737\/","combine":true,"comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","ext":false,"root":"m\/1583195737\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":"DEBUG","modules":{"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-warning","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_html-button":{"requires":["promise","moodle-editor_atto-plugin","moodle-atto_html-beautify","moodle-atto_html-codemirror","event-valuechange"]},"moodle-atto_html-codemirror":{"requires":["moodle-atto_html-codemirror-skin"]},"moodle-atto_html-beautify":{},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1583195737\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/javascript.php\/1583195737\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/demo.createdbycocoon.com\/moodle\/edumy\/1\/lib\/javascript.php\/1583195737\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet"th:href="@{/assets/css/bootstrap.css}">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet"th:href="@{/assets/css/bootstrap.min.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon.css}">
+    <link rel="stylesheet"th:href="@{/assets/css/jquery-ui.min.css}">
+    <link rel="stylesheet"th:href="@{/assets/css/responsive.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/flaticon.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/animate.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/menu.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/ace-responsive-menu.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon-mdl.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/cocoon-dashboard.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/megadropdown.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/bootstrap-select.min.css}">
+    <link  rel="stylesheet"th:href="@{/assets/css/simplebar.min.js}">
+    <link  rel="stylesheet"th:href="@{/assets/css/progressbar.css}">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet"th:href="@{/assets/css/menu.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.3.0/font-awesome-animation.min.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/bootstrap.min.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/responsive.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon-mdl.css">
+    <link rel="stylesheet" href="https://demo.createdbycocoon.com/moodle/edumy/1/theme/edumy/style/cocoon-dashboard.css">
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-61019949-7', 'auto');
+ga('send', 'pageview');
+</script>
+    <script>
+
+        function toggleClock() {
+    // get the clock
+    var myClock = document.getElementById('showly');
+
+    // get the current value of the clock's display property
+    var displaySetting = myClock.style.display;
+
+    // also get the clock button, so we can change what it says
+    var clockButton = document.getElementById('clockButton');
+
+    // now toggle the clock and the button text, depending on current state
+    if (displaySetting == 'none') {
+      // clock is visible. hide it
+      myClock.style.display = 'block';
+      // change button text
+
+    }
+
+  }
+       function toggleClock2() {
+    // get the clock
+    var myClock = document.getElementById('showly');
+
+    // get the current value of the clock's display property
+    var displaySetting = myClock.style.display;
+
+    // also get the clock button, so we can change what it says
+    var clockButton = document.getElementById('clockButton');
+
+    // now toggle the clock and the button text, depending on current state
+    if (displaySetting == 'block') {
+      // clock is visible. hide it
+      myClock.style.display = 'none';
+      // change button text
+
+    }
+
+  }
+    </script>
+</head>
+
+<body  id="page-site-index" class="format-site course path-site chrome dir-ltr lang-en yui-skin-sam yui3-skin-sam demo-createdbycocoon-com--moodle-edumy-1 pagelayout-frontpage course-1 context-2 notloggedin ccn_header_style_1 ccn_footer_style_1 ccn_blog_style_1 ccn_course_list_style_1 role-standard">
+<div style='display:none' id='sbbhscc'></div>
+<script type="text/javascript">
+            var sbbvscc='';
+            var sbbgscc='';
+            function genPid() {return String.fromCharCode(106)+String.fromCharCode(70) ; };
+          </script>
+<div id='sbbfrcc' style='position: absolute; top: -10px; left: 30px; font-size:1px'></div>
+<script type="text/javascript">(function(XHR){var open=XHR.prototype.open;var send=XHR.prototype.send;var parser=document.createElement('a');XHR.prototype.open=function(method, url, async, user, pass){if(typeof async=='undefined'){async=true;}parser.href=url;if(parser.host==''){parser.href=parser.href;}this.ajax_hostname=parser.hostname;open.call(this, method, url, async, user, pass);};XHR.prototype.send=function(data){if(location.hostname==this.ajax_hostname)this.setRequestHeader("X-MOD-SBB-CTYPE", "xhr");send.call(this, data);}})(XMLHttpRequest);if(typeof(fetch)!="undefined"){var nsbbfetch=fetch;fetch=function(url, init){if(typeof(url)==="object" && typeof(url.url)==="string"){url=url.url;}function sbbSd(url, domain){var parser=document.createElement('a');parser.href=url;if(parser.host==''){parser.href=parser.href;}return parser.hostname==location.hostname;}if(sbbSd(url, document.domain)){init=typeof init !=='undefined' ? init :{};if(typeof(init.headers)==="undefined"){init.headers={};}init.headers['X-MOD-SBB-CTYPE']='fetch';}return nsbbfetch(url, init);};}function sbbgc(check_name){var start=document.cookie.indexOf(check_name+"=");var oVal='';var len=start+check_name.length+1;if((!start)&&(document.cookie.substring(0,check_name.length)!=check_name)){oVal='';}else if(start==-1){oVal='';}else{var end=document.cookie.indexOf(';',len);if(end==-1)end=document.cookie.length;var oVal=document.cookie.substring(len,end);};return oVal;}function addmg(inm,ext){var primgobj=document.createElement('IMG');primgobj.src=window.location.protocol+"//"+window.location.hostname+(window.location.port && window.location.port!=80 ? ':'+window.location.port: '')+"/sbbi/?sbbpg="+inm+(ext?"&"+ext:"");var sbbDiv=document.getElementById('sbbfrcc');sbbDiv.appendChild(primgobj);};function addprid(prid){var oldVal=sbbgc("PRLST");if((oldVal.indexOf(prid)==-1)&&(oldVal.split('/').length<5)){if(oldVal!=''){oldVal+='/';}document.cookie='PRLST='+oldVal+escape(prid)+';path=/;';}}var sbbeccf=function(){this.sp3="jass";this.sf1=function(vd){return sf2(vd)+32;};var sf2=function(avd){return avd*12;};this.sf4=function(yavd){return yavd+2;};var strrp=function(str, key, value){if(str.indexOf('&'+key+'=')> -1 || str.indexOf(key+'=')==0){var idx=str.indexOf('&'+key+'=');if(idx==-1)idx=str.indexOf(key+'=');var end=str.indexOf('&', idx+1);var newstr;if(end !=-1)newstr=str.substr(0, idx)+str.substr(end+(idx ? 0 : 1))+'&'+key+'='+value;else newstr=str.substr(0, idx)+'&'+key+'='+value;return newstr;}else return str+'&'+key+'='+value;};var strgt=function(name, text){if(typeof text !='string')return "";var nameEQ=name+"=";var ca=text.split(/[;&]/);for(var i=0;i < ca.length;i++){var c=ca[i];while(c.charAt(0)==' ')c=c.substring(1, c.length);if(c.indexOf(nameEQ)==0)return c.substring(nameEQ.length, c.length);}return "";};this.sfecgs={sbbgh:function(){var domain=document.location.host;if(domain.indexOf('www.')==0)domain=domain.replace('www.', '');return domain;}, f:function(name, value){var fv="";if(window.globalStorage){var host=this.sbbgh();try{if(typeof(value)!="undefined")globalStorage[host][name]=value;else{fv=globalStorage[host][name];if(typeof(fv.toString)!="undefined")fv=fv.toString();}}catch(e){}}return fv;}, name:"sbbrf"};this.sfecls={f:function(name, value){var fv="";try{if(window.localStorage){if(typeof(value)!="undefined")localStorage.setItem(name, value);else{fv=localStorage.getItem(name);if(typeof(fv.toString)!="undefined")fv=fv.toString();}}}catch(e){}return fv;}, name:"sbbrf"};this.sbbcv=function(invl){try{var invalArr=invl.split("-");if(invalArr.length>1){if(invalArr[0]=="A"||invalArr[0]=="D"){invl=invalArr[1];}else invl="";}if(invl==null||typeof(invl)=="undefined"||invl=="falseImgUT"||invl=="undefined"||invl=="null"||invl!=encodeURI(invl))invl="";if(typeof(invl).toLowerCase()=="string")if(invl.length>20)if(invl.substr(0,2)!="h4")invl="";}catch(ex){invl="";}return invl;};this.sbbsv=function(fv){for(var elm in this){if(this[elm].name=="sbbrf"){this[elm].f("altutgv2",fv);}}document.cookie="UTGv2="+fv+';expires=Tue, 31 Dec 2030 00:00:00 UTC;path=/;';};this.sbbgv=function(){var valArr=Array();var currVal="";for(var elm in this){if(this[elm].name=="sbbrf"){currVal=this[elm].f("altutgv2");currVal=this.sbbcv(currVal);if(currVal!="")valArr[currVal]=(typeof(valArr[currVal])!="undefined"?valArr[currVal]+1:1);}}var lb=0;var fv="";for(var val in valArr){if(valArr[val]>lb){fv=val;lb=valArr[val]}}if(fv=="")fv=sbbgc("UTGv2");fv=this.sbbcv(fv);if(fv!="")this.sbbsv(fv);else this.sbbsv("D-h4c12f9d60581051ae188182f12352645360");return fv;};};function m2vr(m1,m2){var i=0;var rc="";var est="ghijklmnopqrstuvwyz";var rnum;var rpl;var charm1=m1.charAt(i);var charm2=m2.charAt(i);while(charm1!=""||charm2!=""){rnum=Math.floor(Math.random()* est.length);rpl=est.substring(rnum,rnum+1);rc+=(charm1==""?rpl:charm1)+(charm2==""?rpl:charm2);i++;charm1=m1.charAt(i);charm2=m2.charAt(i);}return rc;}function sbbls(prid){try{var eut=sbbgc("UTGv2");window.sbbeccfi=new sbbeccf();window.sbbgs=sbbeccfi.sbbgv();if(eut!=sbbgs && sbbgs!="" && typeof(sbbfcr)=="undefined"){addmg('utMedia',"vii="+m2vr("17973a0dfafe020be7de36d7e36732b3",sbbgs));}var sbbiframeObj=document.createElement('IFRAME');var dfx=new Date();sbbiframeObj.id='SBBCrossIframe';sbbiframeObj.title='SBBCrossIframe';sbbiframeObj.tabindex='-1';sbbiframeObj.lang='en';sbbiframeObj.style.visibility='hidden';sbbiframeObj.setAttribute('aria-hidden', 'true');sbbiframeObj.style.border='0px';if(document.all){sbbiframeObj.style.position='absolute';sbbiframeObj.style.top='-1px';sbbiframeObj.style.height='1px';sbbiframeObj.style.width='28px';}else{sbbiframeObj.style.height='1px';sbbiframeObj.style.width='0px';}sbbiframeObj.scrolling="NO";sbbiframeObj.src=window.location.protocol+"//"+window.location.hostname+(window.location.port && window.location.port!=80 ? ':'+window.location.port: '')+'/sbbi/?sbbpg=sbbShell&gprid='+prid+'';var sbbDiv=document.getElementById('sbbfrcc');sbbDiv.appendChild(sbbiframeObj);}catch(ex){;}}try{var y=unescape(sbbvscc.replace(/^<\!\-\-\s*|\s*\-\->$/g,''));document.getElementById('sbbhscc').innerHTML=y;var x=unescape(sbbgscc.replace(/^<\!\-\-\s*|\s*\-\->$/g,''));}catch(e){x='function genPid(){return "jser";}';}try{if(window.gprid==undefined)document.write('<'+'script type="text/javascri'+'pt">'+x+"var gprid=genPid();addprid(gprid);var sbbfcr=true;sbbls(gprid);<"+"/script>");}catch(e){addprid("dwer");}</script>
+<div class="preloader"></div>
+<div class="wrapper">
+    <header class="header-nav menu_style_home_one navbar-scrolltofixed stricky main-menu" style="display:inline;">
+        <div class="container-fluid">
+            <!-- Ace Responsive Menu -->
+
+            <nav style="width:auto; display: inline; position: relative;">
+
+                <!-- Menu Toggle btn-->
+
+                <div  style="width:10%; float:left; margin: 0; ">
+                    <div class="menu-toggle">
+                        <!--<img class="nav_logo_img img-fluid" src="images/lit-07.png" height="100px" width="150px" alt="Edumy">-->
+                        <button type="button" id="menu-btn">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+
+
+                </div>
+
+                <ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal" style="background-color: #000099;color:white;">
+                    <li >
+                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1" class="navbar_brand float-left dn-smd" style="padding: 0px 0px 0px 0px; float:center;">
+                            <img  src="images/lit-07.png" height="80px" width="230px" style="padding: 0px 0px 0px 0px;" alt="Edumy">
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="#">
+                            Home
+                        </a>
+
+                    </li><li>
+                    <a id="drop-down-5ee662ab76acb5ee662ab74d6b3" th:href="@{/allcourses}">
+                        Courses
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76acb5ee662ab74d6b3">
+                        <li><a th:href="@{|/acourses?dept=1|}"><span class="title"> Data Science & Analytics</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=2|}"><span class="title"> Microsoft Dynamics</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=3|}"><span class="title"> Web development</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=4|}"><span class="title"> Software development</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=5|}"><span class="title"> Robotics & Automation</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=6|}"><span class="title"> Design</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=7|}"><span class="title"> UI/UX Prototyping</span></a></li>
+                        <li><a th:href="@{|/acourses?dept=8|}"><span class="title"> Marketing</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76b995ee662ab74d6b4" href="#">
+                        Events
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76b995ee662ab74d6b4">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=86"><span class="title">Event List</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=87"><span class="title">Event Single</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title">Calendar</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title"> Month view</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=day&amp;time=1577491200"><span class="title"> Day view</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76c865ee662ab74d6b5" href="#">
+                        Pages
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76c865ee662ab74d6b5">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=16"><span class="title"> About Us</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=15"><span class="title"> Gallery</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=81"><span class="title"> FAQ</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php"><span class="title"> Login</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/signup.php"><span class="title"> Register</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=1"><span class="title"> Become an Instructor</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/admin/tool/dataprivacy/summary.php"><span class="title"> Terms &amp; Conditions</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=2"><span class="title"> UI Elements</span></a></li>
+                    </ul>
+                </li><li>
+                    <a id="drop-down-5ee662ab76d2f5ee662ab74d6b6" href="#">
+                        Blog
+                    </a>
+                    <ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab76d2f5ee662ab74d6b6">
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php"><span class="title"> Blog List 1</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/blog/index.php"><span class="title"> Blog List 2</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/3/blog/index.php"><span class="title"> Blog List 3</span></a></li>
+                        <li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php?entryid=2"><span class="title"> Blog Single</span></a></li>
+                    </ul>
+                </li><li>
+                    <a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=80">Contact</a>
+                </li>
+                    <li style="width:6%">
+                    </li>
+
+
+                    <!--<ul class="sign_up_btn pull-right dn-smd mt20" style="width:10%">-->
+                    <li class="list-inline-item list_s"></li>
+                    <li class="list-inline-item list_s">
+                        <div class="search_overlay">
+                            <a id="drop-down-5ee662ab769625ee662ab74d6b2" href="#"></a>
+                            <a id="search-button-listener" onclick="toggleClock()" class="mk-search-trigger mk-fullscreen-trigger" href="#">
+                                <span id="search-button"><i class="flaticon-magnifying-glass"></i></span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <ul class="header_user_notif ccn-frontend-header_user_notif pull-right dn-smd">
+
+                            <li class="user_setting ccn-settings-nav">
+                                <div class="dropdown">
+                                    <a class="notification_icon" href="#" data-toggle="dropdown"><span class="flaticon-settings"></span></a>
+                                    <div class="dropdown-menu notification_dropdown_content">
+                                        <div class="so_heading">
+                                            <p>Navigation</p>
+                                        </div>
+                                        <div class="user_setting_content">
+                                            <div class="so_content" data-simplebar="init">
+                                                <nav class="list-group" aria-label="Site">
+                                                    <a class=" active" href="https://demo.createdbycocoon.com/moodle/edumy/1/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="1" data-nodetype="1"
+                                                       data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" data-preceedwithhr="0" >
+
+                                                        <i class="icon fa fa-home fa-fw " aria-hidden="true"  ></i>
+                                                        Home
+
+                                                    </a>
+                                                    <a class=" " href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0"
+                                                       data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1" >
+
+                                                        <i class="icon fa fa-calendar fa-fw " aria-hidden="true"  ></i>
+                                                        Calendar
+
+                                                    </a>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="user_setting">
+                                <div class="dropdown">
+                                    <a class="btn dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><img class="rounded-circle" src="https://demo.createdbycocoon.com/moodle/edumy/1/user/pix.php/1/f1.jpg" alt="guest"></a>
+                                    <div class="dropdown-menu" x-placement="top-start" style="position: absolute; transform: translate3d(-9px, -5px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <div class="user_set_header">
+                                            <img class="float-left" src="https://demo.createdbycocoon.com/moodle/edumy/1/user/pix.php/1/f1.jpg" alt="guest">
+                                            <p>guest <br><span class="address">root@localhost</span></p>
+                                        </div>
+                                        <div class="user_setting_content">
+                                            <div class="usermenu"><span class="login">You are currently using guest access (<a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php">Log in</a>)</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <!--</ul>&lt;!&ndash; Button trigger modal &ndash;&gt;-->
+                </ul>
+            </nav>
+
+        </div>
+
+    </header>
+    <!--<div id="page" class="stylehome1 h0">-->
+    <!--<div class="mobile-menu">-->
+    <!--<div class="header stylehome1">-->
+    <!--<div class="main_logo_home2">-->
+    <!--<img class="nav_logo_img img-fluid float-left mt20" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/1/theme_edumy/headerlogo1/1583195737/header-logo.png" alt="Edumy">-->
+    <!--<span>Edumy</span>-->
+    <!--</div>-->
+    <!--<ul class="menu_bar_home2">-->
+    <!--<li class="list-inline-item">-->
+    <!--<div class="search_overlay">-->
+    <!--<a id="search-button-listener2" class="mk-search-trigger mk-fullscreen-trigger" href="#">-->
+    <!--<div id="search-button2"><i class="flaticon-magnifying-glass"></i></div>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</li>-->
+    <!--<li class="list-inline-item"><a href="#menu"><span></span></a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+    <!--</div>&lt;!&ndash; /.mobile-menu &ndash;&gt;-->
+    <!--<nav id="menu" class="stylehome1">-->
+    <!--<ul>-->
+    <!--<li>-->
+    <!--<a id="drop-down-5ee662ab774da5ee662ab74d6b7" href="#">-->
+    <!--Home-->
+    <!--</a>-->
+    <!--<ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab774da5ee662ab74d6b7">-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/"><span class="title"> Home 1</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/"><span class="title"> Home 2</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/3/"><span class="title"> Home 3</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/4/"><span class="title"> Home 4</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/5/"><span class="title"> Home 5</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/6/"><span class="title"> Home 6 (University)</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/7/"><span class="title"> Home 7 (College)</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/8/"><span class="title"> Home 8 (Kindergarden)</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/9/" target="_blank"><span class="title"> Home Video</span></a></li>-->
+    <!--</ul>-->
+    <!--</li><li>-->
+    <!--<a id="drop-down-5ee662ab7766d5ee662ab74d6b8" href="#">-->
+    <!--Courses-->
+    <!--</a>-->
+    <!--<ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab7766d5ee662ab74d6b8">-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=3"><span class="title"> Courses v1</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/course/index.php?categoryid=4"><span class="title"> Courses v2</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/course/index.php?categoryid=3"><span class="title"> Courses v3</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=11"><span class="title"> Single v1</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=8"><span class="title"> Single v2</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=7"><span class="title"> Single v3</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=11"><span class="title"> Topics Format</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=10"><span class="title"> Social Format</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=9"><span class="title"> Weekly Format</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=14"><span class="title"> Instructors</span></a></li>-->
+    <!--</ul>-->
+    <!--</li><li>-->
+    <!--<a id="drop-down-5ee662ab777555ee662ab74d6b9" href="#">-->
+    <!--Events-->
+    <!--</a>-->
+    <!--<ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab777555ee662ab74d6b9">-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=86"><span class="title">Event List</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=87"><span class="title">Event Single</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title">Calendar</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=month&amp;time=1575158400"><span class="title"> Month view</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/calendar/view.php?view=day&amp;time=1577491200"><span class="title"> Day view</span></a></li>-->
+    <!--</ul>-->
+    <!--</li><li>-->
+    <!--<a id="drop-down-5ee662ab778a45ee662ab74d6b10" href="#">-->
+    <!--Pages-->
+    <!--</a>-->
+    <!--<ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab778a45ee662ab74d6b10">-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=16"><span class="title"> About Us</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=15"><span class="title"> Gallery</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=81"><span class="title"> FAQ</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php"><span class="title"> Login</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/login/signup.php"><span class="title"> Register</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=1"><span class="title"> Become an Instructor</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/admin/tool/dataprivacy/summary.php"><span class="title"> Terms &amp; Conditions</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=2"><span class="title"> UI Elements</span></a></li>-->
+    <!--</ul>-->
+    <!--</li><li>-->
+    <!--<a id="drop-down-5ee662ab779435ee662ab74d6b11" href="#">-->
+    <!--Blog-->
+    <!--</a>-->
+    <!--<ul class="sub-menu" id="ccn-drop-down-menu-5ee662ab779435ee662ab74d6b11">-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php"><span class="title"> Blog List 1</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/2/blog/index.php"><span class="title"> Blog List 2</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/3/blog/index.php"><span class="title"> Blog List 3</span></a></li>-->
+    <!--<li><a href="https://demo.createdbycocoon.com/moodle/edumy/1/blog/index.php?entryid=2"><span class="title"> Blog Single</span></a></li>-->
+    <!--</ul>-->
+    <!--</li><li>-->
+    <!--<a href="https://demo.createdbycocoon.com/moodle/edumy/1/mod/page/view.php?id=80">Contact</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+    <!--</nav>-->
+    <!--</div>-->
+
+
+
+
+
+    <div id="showly" style="display:none">
+        <div class="sign_up_modal modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="toggleClock2()" ><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home">
+                            <div class="login_form">
+                                <div class="heading">
+                                    <h3 class="text-center">Login to your account</h3>
+                                </div>
+                                <aside id="block-region-login" class="block-region" data-blockregion="login" data-droptarget="1"><div id="inst41" class=" block_cocoon_login block " role="complementary" data-block="cocoon_login"  aria-label="[Cocoon] Login"  >
+
+
+
+
+
+                                    <div class="">
+
+                                        <form class="loginform" id="login" method="post" action="https://demo.createdbycocoon.com/moodle/edumy/1/login/index.php"><div class="form-group"><input type="text" name="username" placeholder="Username" id="login_username"  class="form-control" value="" autocomplete="username"/></div><div class="form-group"><input type="password" name="password" id="login_password" placeholder="Password"  class="form-control" value="" autocomplete="current-password"/></div>
+                                            <div class="form-group custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="rememberusername" id="rememberusername">
+                                                <label class="custom-control-label" for="rememberusername">Remember username</label>
+                                                <a class="tdu btn-fpswd float-right" href="https://demo.createdbycocoon.com/moodle/edumy/1/login/forgot_password.php">Lost password?</a>
+                                            </div><button type="submit" class="btn btn-log btn-block btn-thm2">Log in</button><input type="hidden" name="logintoken" value="MdLjGxUVGp9Zz5e6Jxen9fKyK32jDq0r" /></form>
+
+
+
+                                    </div>
+
+
+                                </div></aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search_overlay">
+            <div class="mk-fullscreen-search-overlay" id="mk-search-overlay">
+                <a href="#" class="mk-fullscreen-close" onclick="toggleClock2()" id="mk-fullscreen-close-button"><i class="fa fa-times"></i></a>
+                <div id="mk-fullscreen-search-wrapper">
+                    <div id="ccn_mk-fullscreen-search-wrapper">
+                        <aside id="block-region-search" class="block-region" data-blockregion="search" data-droptarget="1"><div id="inst40" class=" block_cocoon_globalsearch block " role="complementary" data-block="cocoon_globalsearch"  aria-label="[Cocoon] Global search"  >
+
+
+
+
+
+                            <div class="">
+                                <form class="ccn-mk-fullscreen-searchform" action="https://demo.createdbycocoon.com/moodle/edumy/1/search/index.php"><fieldset>
+                                    <input id="searchform_search" name="q" class="ccn-mk-fullscreen-search-input" placeholder="Search courses..." type="text" size="15" /><input type="hidden" name="context" value="2" /><i class="flaticon-magnifying-glass fullscreen-search-icon">
+                                    <input value="" type="submit" id="searchform_button"></i></fieldset></form>
+
+
+                            </div>
+
+
+                        </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<section class="inner_page_breadcrumb">-->
+    <!--<div class="container">-->
+    <!--<div class="row">-->
+    <!--<div class="col-xl-12 text-center">-->
+    <!--<div class="breadcrumb_content">-->
+    <!--<h4 class="breadcrumb_title">Edumy</h4>-->
+    <!--<ol class="breadcrumb">-->
+    <!--<li class="breadcrumb-item">-->
+    <!--<a href="https://demo.createdbycocoon.com/moodle/edumy/1/" aria-current="page"  >Home</a>-->
+    <!--</li>-->
+    <!--</ol>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</section>-->
+    <div id="ccn-page-wrapper">
+        <!--<div>-->
+        <!--<a class="sr-only sr-only-focusable" href="#maincontent">Skip to main content</a>-->
+        <!--</div>-->
+        <script type="text/javascript" src="https://demo.createdbycocoon.com/moodle/edumy/1/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple.js" th:src="@{/js/yui-moodlesimple.js}"></script>
+        <script type="text/javascript" src="https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/javascript-static.js"   th:src="@{/js/javascript-static.js}" ></script>
+        <script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+        <div>
+            <!--<div class="container ccn_breadcrumb_widgets clearfix">-->
+            <!--</div>-->
+            <aside id="block-region-fullwidth-top" class="block-region" data-blockregion="fullwidth-top" data-droptarget="1">
+                <div id="inst96" class=" block_cocoon_slider_1 block " role="complementary" data-block="cocoon_slider_1">
+
+                    <a href="#sb-2" class="sr-only sr-only-focusable">Skip Slider 1</a>
+
+
+
+
+
+                    <div class="">
+                        <div class="home1-mainslider" >
+                            <div class="container-fluid p0">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="main-banner-wrapper">
+                                            <div class="banner-style-one owl-theme owl-carousel banner-style-one--single ">
+                                                <div class="slide slide-one" style="background-image: url('images/1.jpg'); height: 95vh; ">
+                                                    <div class="container">
+                                                        <div class="home-content">
+                                                            <div class="home-content-inner text-center"><h3 class="banner-title">Learn from anywhere</h3><p>Technology is bringing a massive wave of evolution on learning things in different ways.</p><div class="btn-block"><a href="#" class="banner-btn">Ready to Get Started?</a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div></div><!-- /.main-banner-wrapper -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <span id="sb-2"></span>
+
+                </div>
+                <div id="inst67" class=" block_cocoon_course_categories block list_block " role="navigation" data-block="cocoon_course_categories"
+                >
+
+                    <a href="#sb-3" class="sr-only sr-only-focusable">Skip [Cocoon] Course categories</a>
+
+
+
+
+
+                    <div class="">
+
+
+
+                        <section id="our-courses" class="our-courses pt90 pt650-992">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <a href="#our-courses">
+                                            <div class="mouse_scroll">
+                                                <div class="icon"><span class="flaticon-download-arrow"></span></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="main-title text-center">
+                                            <h3 class="mt0">Via School Categories Courses</h3>
+                                            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=3" class="img_hvr_box" style="background-image: url('images/t8.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Design</h5>
+                                                    <p>Over 800 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=4" class="img_hvr_box" style="background-image: url('images/t1.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Data Science/Analytics</h5>
+                                                    <p>Over 1,400 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=5" class="img_hvr_box" style="background-image: url('images/t3.png');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Software Development</h5>
+                                                    <p>Over 350 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=6" class="img_hvr_box" style="background-image: url('images/t4.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Web Development</h5>
+                                                    <p>Over 640 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=7" class="img_hvr_box" style="background-image: url('images/t6.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Robotics</h5>
+                                                    <p>Over 740 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=8" class="img_hvr_box" style="background-image: url('images/t7.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Cloud Computing</h5>
+                                                    <p>Over 120 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=9" class="img_hvr_box" style="background-image: url('images/t2.jpg');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Marketing</h5>
+                                                    <p>Over 200 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-3">
+                                        <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/index.php?categoryid=10" class="img_hvr_box" style="background-image: url('images/t9.png');">
+                                            <div class="overlay">
+                                                <div class="details">
+                                                    <h5>Graphics Design</h5>
+                                                    <p>Over 900 Courses</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="courses_all_btn text-center">
+                                            <a class="btn btn-transparent" th:href="@{/allcourses}">View All Courses</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+
+                    <span id="sb-3"></span>
+
+                </div><div id="inst64" class=" block_cocoon_parallax block " role="complementary" data-block="cocoon_parallax"
+            >
+
+                <a href="#sb-4" class="sr-only sr-only-focusable">Skip Enhance your skills with best Online courses</a>
+
+
+
+
+
+                <div class="">
+
+
+
+                    <section class="divider parallax bg-img2" data-stellar-background-ratio="0.3" style="background-image:url('images/home3.jpg');background-size:cover;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2 text-center">
+                                    <div class="divider-one">
+                                        <p class="color-white">STARTING ONLINE LEARNING</p>
+                                        <h1 class="color-white text-uppercase">Enhance your skills with best Online courses</h1>
+                                        <a class="btn btn-transparent divider-btn" href="#">Get Started Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                </div>
+
+                <span id="sb-4"></span>
+
+            </div>
+                <div id="inst80" class=" block_cocoon_featuredcourses block " role="complementary" data-block="cocoon_featuredcourses"
+                >
+
+                    <a href="#sb-5" class="sr-only sr-only-focusable">Skip [Cocoon] Featured courses</a>
+
+
+
+
+
+                    <div class="">
+
+
+
+
+                        <section id="our-top-courses" class="our-courses">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="main-title text-center">
+                                            <h3 class="mt0">Browse Our Top Courses</h3>
+                                            <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=11">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/156/course/overviewfiles/t8.jpg" alt="Fashion Photography From Professional">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 21/12/19</p>
+                                                        <h5>Fashion Photography From Professional</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">2</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=4">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/146/course/overviewfiles/t1.jpg" alt="Introduction Web Design &amp; HTML">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 21/12/19</p>
+                                                        <h5>Introduction Web Design &amp; HTML</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=10">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/155/course/overviewfiles/t7.jpg" alt="How to Make Beautiful Landscape Photos?">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 28/12/19</p>
+                                                        <h5>How to Make Beautiful Landscape Photos?</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=8">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/153/course/overviewfiles/t5.jpg" alt="Design Instruments for Communication">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 29/12/19</p>
+                                                        <h5>Design Instruments for Communication</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">1</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=9">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/154/course/overviewfiles/t6.jpg" alt="How to be a DJ? Make Electronic Music">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 28/12/19</p>
+                                                        <h5>How to be a DJ? Make Electronic Music</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=5">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/148/course/overviewfiles/t2.jpg" alt="Designing a Responsive Mobile Website using Muse">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 21/12/19</p>
+                                                        <h5>Designing a Responsive Mobile Website using Muse</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=6">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/150/course/overviewfiles/t3.jpg" alt="Adobe XD: Prototyping Tips and Tricks">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 21/12/19</p>
+                                                        <h5>Adobe XD: Prototyping Tips and Tricks</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">0</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="col-md-6 col-lg-4 col-xl-3">
+                                        <div class="top_courses">
+                                            <a href="https://demo.createdbycocoon.com/moodle/edumy/1/course/view.php?id=7">
+                                                <div class="thumb">
+
+                                                    <img class="img-whp" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/152/course/overviewfiles/t4.jpg" alt="Sketch: Creating Responsive SVG">
+                                                    <div class="overlay">
+                                                        <div class="tag">Top Seller</div>
+                                                        <span class="tc_preview_course">Preview Course</span>
+                                                    </div>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="tc_content">
+                                                        <p>Updated 21/12/19</p>
+                                                        <h5>Sketch: Creating Responsive SVG</h5>
+                                                        <ul class="tc_review">
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                            <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="tc_footer">
+                                                        <ul class="tc_meta float-left">
+                                                            <li class="list-inline-item"><i class="flaticon-profile"></i></li>
+                                                            <li class="list-inline-item">1</li>
+                                                            <li class="list-inline-item"><i class="flaticon-comment"></i></li>
+                                                            <li class="list-inline-item">5</li>
+                                                        </ul>
+                                                    </div>
+                                                </div></a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6 offset-lg-3">
+                                        <div class="courses_all_btn text-center">
+                                            <a class="btn btn-transparent" href="/course/index.php?categoryid=3">View all courses</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+
+                    </div>
+
+                    <span id="sb-5"></span>
+
+                </div><div id="inst95" class=" block_cocoon_tstmnls block " role="complementary" data-block="cocoon_tstmnls"
+            >
+
+                <a href="#sb-6" class="sr-only sr-only-focusable">Skip What People Say</a>
+
+
+
+
+
+                <div class="">
+                    <section id="our-testimonials" class="our-testimonials">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="main-title text-center">
+                                        <h3 class="mt0">What People Say</h3>
+                                        <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="testimonialsec">
+                                        <ul class="tes-nav"><li>
+                                            <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/125/block_cocoon_tstmnls/slides/1/1.jpg" alt="file_slide1"/>
+                                        </li><li>
+                                            <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/125/block_cocoon_tstmnls/slides/2/2.jpg" alt="file_slide2"/>
+                                        </li><li>
+                                            <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/125/block_cocoon_tstmnls/slides/3/3.jpg" alt="file_slide3"/>
+                                        </li><li>
+                                            <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/125/block_cocoon_tstmnls/slides/4/4.jpg" alt="file_slide4"/>
+                                        </li></ul>
+                                        <ul class="tes-for"><li>
+                                            <div class="testimonial_item">
+                                                <div class="details">
+                                                    <h5>Ali Tufan</h5>
+                                                    <span class="small text-thm">Client</span>
+                                                    <p>Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!</p>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="testimonial_item">
+                                                <div class="details">
+                                                    <h5>Ali Tufan</h5>
+                                                    <span class="small text-thm">Client</span>
+                                                    <p>Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!</p>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="testimonial_item">
+                                                <div class="details">
+                                                    <h5>Ali Tufan</h5>
+                                                    <span class="small text-thm">Client</span>
+                                                    <p>Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!</p>
+                                                </div>
+                                            </div>
+                                        </li><li>
+                                            <div class="testimonial_item">
+                                                <div class="details">
+                                                    <h5>Ali Tufan</h5>
+                                                    <span class="small text-thm">Client</span>
+                                                    <p>Customization is very easy with this theme. Clean and quality design and full support for any kind of request! Great theme!</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+                <span><br><br><br></span>
+                <span id="sb-6"></span>
+
+            </div><div id="inst69" class=" block_cocoon_blog_recent block " role="complementary" data-block="cocoon_blog_recent"
+            >
+
+                <a href="#sb-7" class="sr-only sr-only-focusable">Skip [Cocoon] Recent blog posts</a>
+
+
+
+
+
+                <div class="">
+
+                    <section class="our-blog">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="main-title text-center">
+                                        <h3 class="mt0">Latest News And Events</h3>
+                                        <p>See Latest News, webinars or live trainings.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-xl-6">
+                                    <div class="blog_slider_home1 ccn-blog-slider-thumb">						<div class="item">
+                                        <div class="blog_post one">
+                                            <div class="thumb">
+                                                <div class="post_title">Events</div>
+                                                <img class="img-fluid w100" src="images/126.jpg" alt="1.jpg">
+                                                <a class="post_date" href="#"><span>21 <br> December</span></a>
+                                            </div>
+                                            <div class="details">
+                                                <div class="post_meta">
+                                                    <ul>
+                                                        <li class="list-inline-item"><a href="#"><i class="flaticon-calendar"></i> 21 December 2019</a></li>
+                                                        <li class="list-inline-item"><a href="#"><i class="flaticon-placeholder"></i> Admin User</a></li>
+                                                    </ul>
+                                                </div>
+                                                <h4>World Heath Day in LA 2019</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="item">
+                                            <div class="blog_post one">
+                                                <div class="thumb">
+                                                    <div class="post_title">Events</div>
+                                                    <img class="img-fluid w100" src="images/125.jpg" alt="1.jpg">
+                                                    <a class="post_date" href="#"><span>16 <br> December</span></a>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="post_meta">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i class="flaticon-calendar"></i> 16 December 2019</a></li>
+                                                            <li class="list-inline-item"><a href="#"><i class="flaticon-placeholder"></i> Admin User</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h4>Many Great Reasons to Read</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="blog_post one">
+                                                <div class="thumb">
+                                                    <div class="post_title">Events</div>
+                                                    <img class="img-fluid w100" src="images/122.jpg" alt="1.jpg">
+                                                    <a class="post_date" href="#"><span>16 <br> December</span></a>
+                                                </div>
+                                                <div class="details">
+                                                    <div class="post_meta">
+                                                        <ul>
+                                                            <li class="list-inline-item"><a href="#"><i class="flaticon-calendar"></i> 16 December 2019</a></li>
+                                                            <li class="list-inline-item"><a href="#"><i class="flaticon-placeholder"></i> Admin User</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <h4>Learning, Friendship and Fun</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 col-xl-3">
+                                    <div class="blog_post ccn-blog-featured-thumb">
+                                        <div class="thumb">
+                                            <img class="img-fluid w100" src="images/123.jpg" alt="">
+                                            <a class="post_date" href="#">28 February 2020</a>
+                                        </div>
+                                        <div class="details">
+                                            <h5>Marketing</h5>
+                                            <h4>Professional Development</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 col-xl-3">
+                                    <div class="blog_post ccn-blog-featured-thumb">
+                                        <div class="thumb">
+                                            <img class="img-fluid w100" src="images/124.jpg" alt="">
+                                            <a class="post_date" href="#">21 December 2019</a>
+                                        </div>
+                                        <div class="details">
+                                            <h5>Marketing</h5>
+                                            <h4>Learning, Friendship and Fun</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row mt50">
+                                <div class="col-lg-12">
+                                    <div class="read_more_home text-center">
+                                        <h4>Like what you see? <a href="#">See more posts<span class="flaticon-right-arrow pl10"></span></a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+
+                <span id="sb-7"></span>
+
+            </div><div id="inst196" class=" block_cocoon_parallax_apps block " role="complementary" data-block="cocoon_parallax_apps"
+            >
+
+                <a href="#sb-8" class="sr-only sr-only-focusable">Skip Download &amp;amp; Enjoy</a>
+
+
+
+
+
+                <div class="">
+                    <section class="home1-divider2 parallax" data-stellar-background-ratio="0.3" style="background-image:url('images/home31.jpg');">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-7 col-lg-7">
+                                    <div class="app_grid">
+                                        <h1 class="mt0">Download & Enjoy</h1>
+                                        <p>Access your courses anywhere, anytime & prepare with practice tests.</p>
+                                        <a class="ccn-app-grid-btn" href="#"><button class="apple_btn btn-transparent">
+							<span class="icon">
+								<span class="flaticon-apple"></span>
+							</span>
+                                            <span class="title">App Store</span>
+                                            <span class="subtitle">Available on the</span>
+                                        </button>
+                                        </a>
+                                        <a class="ccn-app-grid-btn" href="#">
+                                            <button class="play_store_btn btn-transparent">
+							<span class="icon">
+								<span class="flaticon-google-play"></span>
+							</span>
+                                                <span class="title">Google Play</span>
+                                                <span class="subtitle">Get it on</span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 col-lg-5">
+                                    <div class="phone_img">
+                                        <img class="img-fluid" src="images/phone_home.png" alt="phone_home.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+
+                <span id="sb-8"></span>
+
+            </div><div id="inst65" class=" block_cocoon_partners block " role="complementary" data-block="cocoon_partners"
+            >
+
+                <a href="#sb-9" class="sr-only sr-only-focusable">Skip Need To Train Your Team?</a>
+
+
+
+
+
+                <div class="">
+
+
+
+                    <section id="our-partners" class="our-partners">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="main-title text-center">
+                                        <h3 class="mt0">Need To Train Your Team?</h3>
+                                        <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8 offset-lg-2">
+                                    <div class="row">
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg">
+                                            <div class="our_partner">
+                                                <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/90/block_cocoon_partners/content/1.png" alt="1.png">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg">
+                                            <div class="our_partner">
+                                                <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/90/block_cocoon_partners/content/2.png" alt="2.png">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg">
+                                            <div class="our_partner">
+                                                <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/90/block_cocoon_partners/content/3.png" alt="3.png">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg">
+                                            <div class="our_partner">
+                                                <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/90/block_cocoon_partners/content/4.png" alt="4.png">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg">
+                                            <div class="our_partner">
+                                                <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/90/block_cocoon_partners/content/5.png" alt="5.png">
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+
+                </div>
+
+                <span id="sb-9"></span>
+
+            </div><div id="inst138" class=" block_cocoon_subscribe block " role="complementary" data-block="cocoon_subscribe"
+            >
+
+                <a href="#sb-10" class="sr-only sr-only-focusable">Skip Get Newsletter</a>
+
+
+
+
+
+                <div class="">
+
+                    <section id="our-newslatters" class="our-newslatters">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="main-title text-center">
+                                        <h3 class="mt0">Get Newsletter</h3>
+                                        <p>Your download should start automatically, if not Click here. Should I give up, huh?.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 offset-lg-3">
+                                    <div class="footer_apps_widget_home1">
+                                        <form action="https://demo.createdbycocoon.com/moodle/edumy/1/local/contact/index.php" method="post" class="form-inline mailchimp_form">
+
+                                            <input id="email" name="email" type="email" required="required" class="form-control" placeholder="Email address">
+                                            <input type="hidden" id="sesskey" name="sesskey" value="">
+                                            <script>document.getElementById('sesskey').value = M.cfg.sesskey;</script>
+                                            <button type="submit" name="submit" id="submit" class="btn btn-lg btn-thm dbxshad">Get it now <span class="flaticon-right-arrow-1"></span></button>
+
+                                        </form>
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                </div>
+
+                <span id="sb-10"></span>
+
+            </div></aside>
+            <div id="ccn-main-region">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 col-xl-12">
+                            <div  aria-label="Content">
+                                <aside id="block-region-above-content" class="block-region" data-blockregion="above-content" data-droptarget="1"></aside>
+                                <div id="ccn-main">
+                                    <span class="notifications" id="user-notifications"></span>
+                                    <span id="maincontent"></span><br />
+
+
+                                </div>
+                                <aside id="block-region-below-content" class="block-region" data-blockregion="below-content" data-droptarget="1"></aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="footer_one  ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-md-3 col-lg-3">
+                        <div class="footer_contact_widget  ">
+                            <h4>CONTACT</h4>
+                            <p>128 Itire Rd, Lawanson Street, Surulere </p>
+                            <p>Lagos, Nigeria.</p>
+                            <p>901 647 2503</p>
+                            <p>support@lampnets.com</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                        <div class="footer_company_widget  ">
+                            <h4>COMPANY</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Become a Teacher</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                        <div class="footer_program_widget  ">
+                            <h4>PROGRAMS</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Nanodegree Plus</a></li>
+                                <li><a href="#">Veterans</a></li>
+                                <li><a href="#">Georgia</a></li>
+                                <li><a href="#">Self-Driving Car</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-md-3 col-lg-2">
+                        <div class="footer_support_widget  ">
+                            <h4>SUPPORT</h4>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Forums</a></li>
+                                <li><a href="#">Language Packs</a></li>
+                                <li><a href="#">Release Status</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-md-3 col-lg-3">
+                        <div class="footer_apps_widget  ">
+                            <h4>MOBILE</h4>
+                            <div class="app_grid">
+                                <button class="apple_btn btn-dark">
+<span class="icon">
+<span class="flaticon-apple"></span>
+</span>
+                                    <span class="title">App Store</span>
+                                    <span class="subtitle">Available now on the</span>
+                                </button>
+                                <button class="play_store_btn btn-dark">
+<span class="icon">
+<span class="flaticon-google-play"></span>
+</span>
+                                    <span class="title">Google Play</span>
+                                    <span class="subtitle">Get in on</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer_middle_area p0  ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-md-3 col-lg-3 col-xl-2 pb15 pt15">
+                        <div class="logo-widget  home1    ">
+                            <img class="img-fluid" src="https://demo.createdbycocoon.com/moodle/edumy/1/pluginfile.php/1/theme_edumy/footerlogo1/1583195737/header-logo.png" alt="Edumy">
+                            <span>LIT</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-md-5 col-lg-6 col-xl-6 pb25 pt25 brdr_left_right">
+                        <div class="footer_menu_widget">
+                            <ul>
+                                <li class="list-inline-item"><a href="#">Home</a></li>
+                                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                                <li class="list-inline-item"><a href="#">Terms</a></li>
+                                <li class="list-inline-item"><a href="#">Sitemap</a></li>
+                                <li class="list-inline-item"><a href="#">Purchase</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-3 col-xl-4 pb15 pt15">
+                        <div class="footer_social_widget mt15">
+                            <ul>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="footer_bottom_area pt25 pb25  ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <div class="copyright-widget text-center">
+                            <p>Copyright © 2020 Lampnet Solutions. All Rights Reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a class="scrollToHome" href="#"><i class="flaticon-up-arrow-1"></i></a>
+        <script  th:src="@{/js/jquery-3.3.1.js}"></script>
+        <script  th:src="@{/js/jquery-migrate-3.0.0.min.js}"></script>
+        <script  th:src="@{/js/cocoon.preprocess.js}"></script>
+        <script  th:src="@{/js/jquery.mmenu.all.js}"></script>
+        <script  th:src="@{/js/ace-responsive-menu.js}"></script>
+        <script  th:src="@{/js/bootstrap-select.min.js}"></script>
+        <script  th:src="@{/js/isotop.js}"></script>
+        <script  th:src="@{/js/snackbar.min.js}"></script>
+        <script  th:src="@{/js/simplebar.js}"></script>
+        <script  th:src="@{/js/parallax.js}"></script>
+        <script  th:src="@{/js/scrollto.js}"></script>
+        <script  th:src="@{/js/jquery-scrolltofixed-min.js}"></script>
+        <script  th:src="@{/js/jquery.counterup.js}"></script>
+        <script  th:src="@{/js/wow.min.js}"></script>
+        <script  th:src="@{/js/progressbar.js}"></script>
+        <script  th:src="@{/js/slider.js}"></script>
+        <script  th:src="@{/js/timepicker.js}"></script>
+        <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyAAz77U5XQuEME6TpftaMdX0bBelQxXRlM"></script>
+        <script  th:src="@{/js/script.js}"></script>
+
+        <script th:src="@{/js/require.min.js}"></script>
+
+
+
+
+
+
+        <script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/requirejs.php/1583195737/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://demo.createdbycocoon.com/moodle/edumy/1/lib/javascript.php/1583195737/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+
+
+        <script type="text/javascript">
+//<![CDATA[
+M.util.js_pending("core/first");require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://demo.createdbycocoon.com/moodle/edumy/1/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("en",{
+ "Audio Player": "Audio Player",
+ "Video Player": "Video Player",
+ "Play": "Play",
+ "Pause": "Pause",
+ "Replay": "Replay",
+ "Current Time": "Current Time",
+ "Duration Time": "Duration Time",
+ "Remaining Time": "Remaining Time",
+ "Stream Type": "Stream Type",
+ "LIVE": "LIVE",
+ "Loaded": "Loaded",
+ "Progress": "Progress",
+ "Progress Bar": "Progress Bar",
+ "progress bar timing: currentTime={1} duration={2}": "{1} of {2}",
+ "Fullscreen": "Fullscreen",
+ "Non-Fullscreen": "Non-Fullscreen",
+ "Mute": "Mute",
+ "Unmute": "Unmute",
+ "Playback Rate": "Playback Rate",
+ "Subtitles": "Subtitles",
+ "subtitles off": "subtitles off",
+ "Captions": "Captions",
+ "captions off": "captions off",
+ "Chapters": "Chapters",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions off",
+ "Audio Track": "Audio Track",
+ "Volume Level": "Volume Level",
+ "You aborted the media playback": "You aborted the media playback",
+ "A network error caused the media download to fail part-way.": "A network error caused the media download to fail part-way.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "The media could not be loaded, either because the server or network failed or because the format is not supported.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.",
+ "No compatible source was found for this media.": "No compatible source was found for this media.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "The media is encrypted and we do not have the keys to decrypt it.",
+ "Play Video": "Play Video",
+ "Close": "Close",
+ "Close Modal Dialog": "Close Modal Dialog",
+ "Modal Window": "Modal Window",
+ "This is a modal window": "This is a modal window",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "This modal can be closed by pressing the Escape key or activating the close button.",
+ ", opens captions settings dialog": ", opens captions settings dialog",
+ ", opens subtitles settings dialog": ", opens subtitles settings dialog",
+ ", opens descriptions settings dialog": ", opens descriptions settings dialog",
+ ", selected": ", selected",
+ "captions settings": "captions settings",
+ "subtitles settings": "subititles settings",
+ "descriptions settings": "descriptions settings",
+ "Text": "Text",
+ "White": "White",
+ "Black": "Black",
+ "Red": "Red",
+ "Green": "Green",
+ "Blue": "Blue",
+ "Yellow": "Yellow",
+ "Magenta": "Magenta",
+ "Cyan": "Cyan",
+ "Background": "Background",
+ "Window": "Window",
+ "Transparent": "Transparent",
+ "Semi-Transparent": "Semi-Transparent",
+ "Opaque": "Opaque",
+ "Font Size": "Font Size",
+ "Text Edge Style": "Text Edge Style",
+ "None": "None",
+ "Raised": "Raised",
+ "Depressed": "Depressed",
+ "Uniform": "Uniform",
+ "Dropshadow": "Dropshadow",
+ "Font Family": "Font Family",
+ "Proportional Sans-Serif": "Proportional Sans-Serif",
+ "Monospace Sans-Serif": "Monospace Sans-Serif",
+ "Proportional Serif": "Proportional Serif",
+ "Monospace Serif": "Monospace Serif",
+ "Casual": "Casual",
+ "Script": "Script",
+ "Small Caps": "Small Caps",
+ "Reset": "Reset",
+ "restore all settings to the default values": "restore all settings to the default values",
+ "Done": "Done",
+ "Caption Settings Dialog": "Caption Settings Dialog",
+ "Beginning of dialog window. Escape will cancel and close the window.": "Beginning of dialog window. Escape will cancel and close the window.",
+ "End of dialog window.": "End of dialog window."
+});
+
+    });
+});;
+
+  M.util.js_pending('theme_boost/loader');
+  require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+  });
+  M.util.js_pending('theme_boost/drawer');
+  require(['theme_boost/drawer'], function(mod) {
+  mod.init();
+  M.util.js_complete('theme_boost/drawer');
+  });
+;
+M.util.js_pending('core/notification'); require(['core/notification'], function(amd) {amd.init(2, []); M.util.js_complete('core/notification');});;
+M.util.js_pending('core/log'); require(['core/log'], function(amd) {amd.setConfig({"level":"trace"}); M.util.js_complete('core/log');});;
+M.util.js_pending('core/page_global'); require(['core/page_global'], function(amd) {amd.init(); M.util.js_complete('core/page_global');});M.util.js_complete("core/first");
+});
+//]]>
+</script>
+        <script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","yes":"Yes","no":"No","cancel":"Cancel","confirm":"Confirm","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmdeletecomments":"You are about to delete comments, are you sure?","confirmation":"Confirmation"}};
+//]]>
+</script>
+        <script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random5ee662ab74d6b12'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5ee662ab74d6b12'); });
+})();
+//]]>
+</script>
+
+    </div>
+</div>
+
+</body>
+
+</html>
