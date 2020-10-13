@@ -39,7 +39,8 @@ public class UserServiceImpl implements UserService {
         Optional<Roles> roles =  roleRepository.findById(id);
         List<Roles> allroles = new ArrayList<>();
         allroles.add(roles.get());
-		
+        System.out.println("password");
+        System.out.println(user.getPassword());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         System.out.println(roles.get());
         user.setRoles(new HashSet<>(allroles));

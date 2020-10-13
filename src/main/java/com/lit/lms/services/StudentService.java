@@ -127,6 +127,8 @@ public class StudentService {
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
+
+
         student.setEmail(newStudent.getEmail());
         student.setFname(newStudent.getFname());
         student.setSname(newStudent.getSname());
@@ -136,8 +138,8 @@ public class StudentService {
         User s = new User();
         s.setEmail(newStudent.getEmail());
         s.setPassword(newStudent.getPassword());
-        s.setEmail(newStudent.getEmail());
         s.setUsername(newStudent.getUsername());
+
 
             userService.save(s);
 

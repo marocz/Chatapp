@@ -1,57 +1,39 @@
 package com.lit.lms.controller;
 
-import com.lit.lms.entities.*;
-import com.lit.lms.repository.*;
-import com.lit.lms.services.*;
-import com.sipios.springsearch.anotation.SearchSpec;
-
-import com.lit.lms.model.UserForm;
-
-import org.apache.commons.lang.exception.ExceptionUtils;
+import com.lit.lms.entities.User;
+import com.lit.lms.repository.UserRepository;
+import com.lit.lms.services.SecurityService;
+import com.lit.lms.services.UserValidator;
+import java.util.HashMap;
+import org.slf4j.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.data.web.SortDefault;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.*;
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.slf4j.*;
-
-import java.io.FileNotFoundException;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Controller
+import com.lit.lms.model.ConfirmationToken;
+import com.lit.lms.entities.User;
+import com.lit.lms.services.EmailSenderService;
+import com.lit.lms.repository.ConfirmationTokenRepository;
+import com.lit.lms.repository.UserRepository;
+
+
+@RestController
 public class UserController {
 
     @Autowired
@@ -64,7 +46,16 @@ public class UserController {
     private UserValidator userValidator;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserRepository userRepository;
 
+    @Autowired
+    private ConfirmationTokenRepository confirmationTokenRepository;
+
+    @Autowired
+    private EmailSenderService emailSenderService;
+
+    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
 
 
@@ -215,44 +206,35 @@ public class UserController {
 //        return "adminlogin";
 //
 //    }
-    @GetMapping(value = {"/mentee"})
-    public String mentee(Model model) {
-        Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
-        String logname = loggedInUser.getName();
-        model.addAttribute("username", logname);
+    @RequestMapping(value="/forgot-password", method=RequestMethod.POST)
+    public String forgotUserPassword(ModelAndView modelAndView, @RequestBody User user) {
+        User existingUser = userRepository.findByEmailIgnoreCase(user.getEmail());
+        if(existingUser != null) {
+            // create token
+            ConfirmationToken confirmationToken = new ConfirmationToken(existingUser);
+
+            // save it
+            confirmationTokenRepository.save(confirmationToken);
+
+            // create the email
+            SimpleMailMessage mailMessage = new SimpleMailMessage();
+            mailMessage.setTo(existingUser.getEmail());
+            mailMessage.setSubject("Complete Password Reset!");
+            mailMessage.setFrom("nairobley@gmail.com");
+            mailMessage.setText("To complete the password reset process, please click here: "
+                    +"http://localhost:8082/confirm-reset?token="+confirmationToken.getConfirmationToken());
+
+            emailSenderService.sendEmail(mailMessage);
+
+            return "Request to reset password received. Check your inbox for the reset link.";
 
 
-        return "mentee";
-    }
-    //    @GetMapping(value = {"/","/login","loginpage"})
-//    public String loginin(Model model) {
-//
-//        return "loginpage";
-//    }
-    @GetMapping("/success")
-    public String success(Model model) {
-        return "success";
-    }
+        } else {
+            return "This email does not exist!";
 
-    @RequestMapping("/category")
-    public String category() {
-        return "category";
-    }
-
-    @RequestMapping("/product")
-    public String product() {
-        return "product";
-    }
+        }
 
 
-    @RequestMapping("/cart")
-    public String cart() {
-        return "cart";
-    }
-
-    @RequestMapping("/checkout")
-    public String checkouts() {
-        return "checkout";
     }
 
     public void authWithoutPassword(User user) {
@@ -268,6 +250,85 @@ public class UserController {
             result = str.substring(0, str.length() - 1);
         }
         return result;
+    }
+    @RequestMapping(value="/confirm-reset", method= {RequestMethod.GET, RequestMethod.POST})
+    public HashMap<String, String> validateResetToken(Model modelAndView, @RequestParam("token")String confirmationToken)
+    {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+        if(token != null) {
+            User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
+            user.setStatus("Active");
+            userRepository.save(user);
+            modelAndView.addAttribute("user", user);
+            modelAndView.addAttribute("emailId", user.getEmail());
+            HashMap<String, String> map = new HashMap<>();
+            map.put("email", user.getEmail());
+            map.put("name", user.getUsername());
+            map.put("message", "resetPassword");
+
+
+
+            return map;
+
+        } else {
+
+            HashMap<String, String> map = new HashMap<>();
+            map.put("message", "The link is invalid or broken!");
+            return map;
+        }
+
+
+    }
+
+    /**
+     * Receive the token from the link sent via email and display form to reset password
+     */
+    @RequestMapping(value = "/reset-password", method = RequestMethod.POST)
+    public String resetUserPassword(Model modelAndView, @RequestBody User user) {
+        // ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+        System.out.println(user.getEmail());
+        if(user.getEmail() != null) {
+            // use email to find user
+            User tokenUser = userRepository.findByEmailIgnoreCase(user.getEmail());
+            tokenUser.setStatus("Active");
+            tokenUser.setPassword(encoder.encode(user.getPassword()));
+            // System.out.println(tokenUser.getPassword());
+            userRepository.save(tokenUser);
+            modelAndView.addAttribute("message", "Password successfully reset. You can now log in with the new credentials.");
+            return "successResetPassword";
+        } else {
+            modelAndView.addAttribute("message","The link is invalid or broken!");
+            return "error";
+        }
+
+
+    }
+
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public ConfirmationTokenRepository getConfirmationTokenRepository() {
+        return confirmationTokenRepository;
+    }
+
+    public void setConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository) {
+        this.confirmationTokenRepository = confirmationTokenRepository;
+    }
+
+    public EmailSenderService getEmailSenderService() {
+        return emailSenderService;
+    }
+
+    public void setEmailSenderService(EmailSenderService emailSenderService) {
+        this.emailSenderService = emailSenderService;
     }
 //    @RequestMapping(value = { "/userImage" }, method = RequestMethod.GET)
 //    public void userImage(HttpServletRequest request, HttpServletResponse response, Model model,

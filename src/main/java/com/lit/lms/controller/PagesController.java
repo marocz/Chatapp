@@ -12,6 +12,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.Header;
 import com.google.gson.Gson;
 import com.lit.lms.services.core.*;
+import org.springframework.web.bind.annotation.*;
 
 
 import com.sipios.springsearch.anotation.SearchSpec;
@@ -64,9 +65,12 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@Controller
+import com.lit.lms.repository.UserRepository;
+
+@RestController
 public class PagesController {
     @Autowired
     private CourseRepository courseRepository;
@@ -83,6 +87,8 @@ public class PagesController {
 
     @Autowired
     private PaystackInline paystackInline;
+    @Autowired
+    private UserRepository userService;
 
 
     @GetMapping(value = {"/allcourses"})
@@ -128,17 +134,51 @@ public class PagesController {
         return "register";
     }
     @PostMapping(value = {"/register"})
-    public String register(Model model, @ModelAttribute("userForm") RegisterDTO userForm) {
+    //public String register(Model model, @ModelAttribute("userForm") RegisterDTO userForm) {
+        public String register(Model model, @RequestBody RegisterDTO userForm) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String logname = loggedInUser.getName();
+
+        System.out.println("first etst");
+
         // User users = userService.findByUsernameIgnoreCase(logname);
         // String id = users.getEmplid();
 
-        studentService.createStudent(userForm);
+        String username = userForm.getUsername();
+        String email = userForm.getEmail();
+
+        try {
+            if (!userService.findByUsername(username).getUsername().isEmpty() ) {
+                try{
+                    if (!userService.findByUsername(username).getUsername().isEmpty()){
+
+                        return "username already exist";
+                    }
+
+                } catch (NullPointerException f){
+                    return "email already exist";
+
+                }
 
 
+            }else {
+                studentService.createStudent(userForm);
+            }
+        }
+        catch (NullPointerException e){
+            try {
+                if (!userService.findByEmail(email).getEmail().isEmpty()) {
+                    return "email already exist";
+                }
+            }
+            catch (NullPointerException j) {
+                studentService.createStudent(userForm);
+            }
+            return "user created successfully";
+        }
 
-        return "redirect:/login";
+    return "user created successfully";
+
     }
 
     @GetMapping(value = {"/1mspowerbi"})

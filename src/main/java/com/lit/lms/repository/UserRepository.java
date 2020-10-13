@@ -10,6 +10,8 @@ import com.lit.lms.entities.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsernameIgnoreCase(String username);
     User findByUsername(String username);
+    User findByEmailIgnoreCase(String email);
+    User findByEmail(String email);
 
 }
 
