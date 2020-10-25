@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -58,9 +59,10 @@ public class Student{
     private String city;
     private String country;
     private String email;
+    private String customdata;
 
     @ManyToMany(mappedBy = "students")
-    private Set<Course> courses;
+    private List<Course> courses;
 
     @OneToMany(mappedBy = "assignment")
     private Set<StudentAssignment> studentAssignment = new HashSet<StudentAssignment>();
@@ -93,13 +95,20 @@ public class Student{
         this.sId = sId;
     }
 
+    public String getCustomdata() {
+        return customdata;
+    }
+
+    public void setCustomdata(String customdata) {
+        this.customdata = customdata;
+    }
 
 
-    public Set<Course> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
@@ -115,7 +124,7 @@ public class Student{
         this.studentAssignment.add(studentAssignment);
     }
 
-    public Student(String fname, String sname, String city, String country, String email, Set<Course> courses, Set<StudentAssignment> studentAssignment) {
+    public Student(String fname, String sname, String city, String country, String email, List<Course> courses, Set<StudentAssignment> studentAssignment) {
         this.fname = fname;
         this.sname = sname;
         this.city = city;

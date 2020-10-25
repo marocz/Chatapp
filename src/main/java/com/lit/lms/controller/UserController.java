@@ -1,36 +1,32 @@
 package com.lit.lms.controller;
 
 import com.lit.lms.entities.User;
+import com.lit.lms.model.ConfirmationToken;
+import com.lit.lms.model.Student;
+import com.lit.lms.model.Teacher;
+import com.lit.lms.repository.ConfirmationTokenRepository;
+import com.lit.lms.repository.StudentRepository;
+import com.lit.lms.repository.TeacherRepository;
 import com.lit.lms.repository.UserRepository;
+import com.lit.lms.services.EmailSenderService;
 import com.lit.lms.services.SecurityService;
 import com.lit.lms.services.UserValidator;
-import java.util.HashMap;
 import org.slf4j.*;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.lit.lms.model.ConfirmationToken;
-import com.lit.lms.entities.User;
-import com.lit.lms.services.EmailSenderService;
-import com.lit.lms.repository.ConfirmationTokenRepository;
-import com.lit.lms.repository.UserRepository;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -54,6 +50,11 @@ public class UserController {
 
     @Autowired
     private EmailSenderService emailSenderService;
+    @Autowired
+    private StudentRepository studentRepo;
+    @Autowired
+    private TeacherRepository teacherRepository;
+
 
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
@@ -74,18 +75,41 @@ public class UserController {
 
         return "404";
     }
-    @GetMapping(value = {"/login","loginpage"})
+    @GetMapping(value = {"/designation"})
     public String login(Model model, String error, String logout) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         System.out.println(auth.getPrincipal());
         String user = auth.getPrincipal().toString();
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+        String logname = auth.getName();
+        User userp =  userRepository.findByUsername(logname);
 
+        try {
+            Student student = studentRepo.findByEmail(userp.getEmail());
+            if(student.getEmail() != null){
+                return "student";
+            }
+        }
+        catch (NullPointerException e){
+            try{
+                Teacher teacher = teacherRepository.findByEmail(userp.getEmail());
+                if(teacher.getEmail() != null){
+                    return "Teacher";
+                }
+            }
+            catch(NullPointerException e1){
+                List<String> adminrole = new ArrayList<>();
+                 userp.getRoles().forEach(roles -> {
+                     if(roles.getName().equalsIgnoreCase("ADMIN")){
+                         adminrole.add("admin");
 
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
+                     }
+                 });
+                if(!adminrole.isEmpty()) {
+                    return "admin";
+                }
 
+            }
+        }
 
 
 
@@ -96,6 +120,7 @@ public class UserController {
     public String welcome(Model model) {
         Authentication loggedInUser = SecurityContextHolder.getContext().getAuthentication();
         String logname = loggedInUser.getName();
+
         // User users = userService.findByUsernameIgnoreCase(logname);
         // String id = users.getEmplid();
 
@@ -207,7 +232,7 @@ public class UserController {
 //
 //    }
     @RequestMapping(value="/forgot-password", method=RequestMethod.POST)
-    public String forgotUserPassword(ModelAndView modelAndView, @RequestBody User user) {
+    public String forgotUserPassword(ModelAndView modelAndView, @RequestBody User user, @RequestParam(value = "url", defaultValue = "") String url) {
         User existingUser = userRepository.findByEmailIgnoreCase(user.getEmail());
         if(existingUser != null) {
             // create token
@@ -222,7 +247,7 @@ public class UserController {
             mailMessage.setSubject("Complete Password Reset!");
             mailMessage.setFrom("nairobley@gmail.com");
             mailMessage.setText("To complete the password reset process, please click here: "
-                    +"http://localhost:8082/confirm-reset?token="+confirmationToken.getConfirmationToken());
+                    +url+confirmationToken.getConfirmationToken());
 
             emailSenderService.sendEmail(mailMessage);
 
@@ -252,31 +277,34 @@ public class UserController {
         return result;
     }
     @RequestMapping(value="/confirm-reset", method= {RequestMethod.GET, RequestMethod.POST})
-    public HashMap<String, String> validateResetToken(Model modelAndView, @RequestParam("token")String confirmationToken)
-    {
-        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+    public HashMap<String, String> validateResetToken(Model modelAndView, @RequestParam("token")String confirmationToken) {
+        try {
+            ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-        if(token != null) {
-            User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
-            user.setStatus("Active");
-            userRepository.save(user);
-            modelAndView.addAttribute("user", user);
-            modelAndView.addAttribute("emailId", user.getEmail());
-            HashMap<String, String> map = new HashMap<>();
-            map.put("email", user.getEmail());
-            map.put("name", user.getUsername());
-            map.put("message", "resetPassword");
+            if (token != null) {
+                User user = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
+                user.setStatus("Active");
+                userRepository.save(user);
+                modelAndView.addAttribute("user", user);
+                modelAndView.addAttribute("emailId", user.getEmail());
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", user.getEmail());
+                map.put("name", user.getUsername());
+                map.put("message", "resetPassword");
 
 
+                return map;
 
-            return map;
-
-        } else {
+            }
+        } catch (NullPointerException e) {
 
             HashMap<String, String> map = new HashMap<>();
             map.put("message", "The link is invalid or broken!");
             return map;
         }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("message", "nothing is done yet!");
+        return map;
 
 
     }
@@ -285,24 +313,40 @@ public class UserController {
      * Receive the token from the link sent via email and display form to reset password
      */
     @RequestMapping(value = "/reset-password", method = RequestMethod.POST)
-    public String resetUserPassword(Model modelAndView, @RequestBody User user) {
-        // ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+    public String resetUserPassword(Model modelAndView, @RequestBody User user, @RequestParam("token") String confirmationToken) {
+        try {
+            ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-        System.out.println(user.getEmail());
-        if(user.getEmail() != null) {
-            // use email to find user
-            User tokenUser = userRepository.findByEmailIgnoreCase(user.getEmail());
-            tokenUser.setStatus("Active");
-            tokenUser.setPassword(encoder.encode(user.getPassword()));
-            // System.out.println(tokenUser.getPassword());
-            userRepository.save(tokenUser);
-            modelAndView.addAttribute("message", "Password successfully reset. You can now log in with the new credentials.");
-            return "successResetPassword";
-        } else {
-            modelAndView.addAttribute("message","The link is invalid or broken!");
-            return "error";
+
+            if(token != null) {
+                User users = userRepository.findByEmailIgnoreCase(token.getUser().getEmail());
+
+                System.out.println(users.getEmail());
+                if (user.getEmail() != null) {
+                    // use email to find user
+                    if(users.getEmail().equalsIgnoreCase(user.getEmail())) {
+                        User tokenUser = userRepository.findByEmailIgnoreCase(user.getEmail());
+                        tokenUser.setStatus("Active");
+                        tokenUser.setPassword(encoder.encode(user.getPassword()));
+                        // System.out.println(tokenUser.getPassword());
+                        userRepository.save(tokenUser);
+                        modelAndView.addAttribute("message", "Password successfully reset. You can now log in with the new credentials.");
+                        return "password updated successfully";
+                    }
+
+                } else {
+                    modelAndView.addAttribute("message", "The link is invalid or broken!");
+                    return "The link is invalid or broken";
+                }
+            }
+            else{
+                return "Invalid token";
+            }
+            return "password updated successfully";
         }
-
+        catch(NullPointerException e){
+            return "Something went wrong";
+        }
 
     }
 

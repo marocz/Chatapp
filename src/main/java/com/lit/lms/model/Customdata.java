@@ -1,52 +1,25 @@
 package com.lit.lms.model;
 
-import com.lit.lms.entities.User;
-import org.springframework.web.multipart.MultipartFile;
 
+public class Customdata {
 
-public class UserForm {
-
-
-
-        private String code;
-
-
-
-
-        // Upload file.
-        private MultipartFile fileData;
-    public UserForm() {
-
-
+    public String getStudentId() {
+        return studentId;
     }
 
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
 
-        public UserForm(User user) {
+    public String getCustomdata() {
+        return customdata;
+    }
 
+    public void setCustomdata(String customdata) {
+        this.customdata = customdata;
+    }
 
-        }
-
-        public String getCode() {
-            return code;
-        }
-
-        public void setCode(String code) {
-            this.code = code;
-        }
-
-
-
-
-
-        public MultipartFile getFileData() {
-            return fileData;
-        }
-
-        public void setFileData(MultipartFile fileData) {
-            this.fileData = fileData;
-        }
-
-
-
+    private String studentId;
+    private String customdata;
 
 }

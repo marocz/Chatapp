@@ -1,5 +1,7 @@
 package com.lit.lms.dto;
 
+import java.util.List;
+
 /**
  * Created by Jonathan on 10/28/2017.
  */
@@ -10,6 +12,18 @@ public class CourseDTO {
     private String description;
     private String title;
     private String imgurl;
+    private String curl;
+    private String deptname;
+    private List<TeacherDTO> teacher;
+    private Long price;
+
+    private String status;
+
+
+    private String deptdesc;
+    private int rating;
+    private int studentcount;
+
     public String getCurl() {
         return curl;
     }
@@ -18,7 +32,7 @@ public class CourseDTO {
         this.curl = curl;
     }
 
-    private String curl;
+
 
     public String getDeptname() {
         return deptname;
@@ -28,7 +42,37 @@ public class CourseDTO {
         this.deptname = deptname;
     }
 
-    private String deptname;
+
+    public String getDeptdesc() {
+        return deptdesc;
+    }
+
+    public void setDeptdesc(String deptdesc) {
+        this.deptdesc = deptdesc;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public int getStudentcount() {
+        return studentcount;
+    }
+
+    public void setStudentcount(int studentcount) {
+        this.studentcount = studentcount;
+    }
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
 
     public Long getcId() {
         return cId;
@@ -69,6 +113,23 @@ public class CourseDTO {
     public void setImgurl(String imgurl) {
         this.imgurl = imgurl;
     }
+
+
+    public List<TeacherDTO> getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(List<TeacherDTO> teacher) {
+        this.teacher = teacher;
+    }
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
 
 }

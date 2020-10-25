@@ -51,11 +51,64 @@ public class StudentService {
         System.out.println(students);
         return students;
     }
+    public String getCustomdata(String studentId){
+        String customdata;
+        long id = Long.parseLong(studentId);
+
+        Student student = studentRepo.findById(id).get();
+        customdata = student.getCustomdata();
+        return customdata;
+    }
+    public Student setCustomdata(String customdata, String studentId){
+        long id = Long.parseLong(studentId);
+        Student student = studentRepo.findById(id).get();
+        System.out.println(student.getFname());
+        student.setCustomdata(customdata);
+        System.out.println(student.getCustomdata());
+        studentRepo.save(student);
+        return student;
+    }
 
     public Student getStudent(String studentId){
         long id = Long.parseLong(studentId);
         Student student = studentRepo.findById(id).get();
         return student;
+    }
+    public StudentDTO getStudentByEmail(String email){
+
+        Student student = studentRepo.findByEmail(email);
+
+                StudentDTO studentM = new StudentDTO();
+                studentM.setStudentId(student.getsId());
+        System.out.println("-------Student ID--------");
+                studentM.setSname(student.getSname());
+                studentM.setFname(student.getFname());
+                studentM.setEmail(student.getEmail());
+                studentM.setCountry(student.getCountry());
+                studentM.setCity(student.getCity());
+
+                try{
+
+                    studentM.setCourses(student.getCourses());
+                    studentM.setCustomdata(student.getCustomdata());
+
+                    return studentM;
+
+                }catch (NullPointerException e){
+                    System.out.println("-------Course section-------");
+                    List<Course> courses = new ArrayList<>();
+                    String nullv = "NULL";
+
+                    studentM.setCustomdata(nullv);
+
+                    studentM.setCourses(courses);
+                    return studentM;
+                }
+
+
+
+
+
     }
 
     public ResponseEntity<String> enroll(Enrollment enrollment){
@@ -85,8 +138,12 @@ public class StudentService {
 
         if (student.getFname() != null) {
             updateStudent.setFname(student.getFname());
-        } else if (student.getEmail() != null) {
+            updateStudent.setCity(student.getCity());
+            updateStudent.setSname(student.getSname());
             updateStudent.setEmail(student.getEmail());
+            updateStudent.setCustomdata(student.getCustomdata());
+            updateStudent.setCountry(student.getCountry());
+
         }
 
         studentRepo.save(updateStudent);
@@ -128,7 +185,6 @@ public class StudentService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
-
         student.setEmail(newStudent.getEmail());
         student.setFname(newStudent.getFname());
         student.setSname(newStudent.getSname());
@@ -139,6 +195,7 @@ public class StudentService {
         s.setEmail(newStudent.getEmail());
         s.setPassword(newStudent.getPassword());
         s.setUsername(newStudent.getUsername());
+        s.setStatus("Active");
 
 
             userService.save(s);
@@ -203,6 +260,30 @@ public class StudentService {
             c.setTitle(course.getTitle());
             c.setDescription(course.getDescription());
             c.setName(course.getName());
+            c.setDeptdesc(course.getDepartment().getDescription());
+            c.setDeptname(course.getDepartment().getName());
+            c.setImgurl(course.getImgurl());
+            c.setRating(course.getRating());
+            c.setCurl(course.getCurl());
+            c.setPrice(course.getPrice());
+
+try {
+    List<TeacherDTO> teacherDTOS = new ArrayList<>();
+    course.getTeachers().forEach(teacher -> {
+
+        TeacherDTO teacherDTO = new TeacherDTO();
+        teacherDTO.setEmail(teacher.getEmail());
+        teacherDTO.setFirstname(teacher.getFirstname());
+        teacherDTO.setSurname(teacher.getSurname());
+        teacherDTOS.add(teacherDTO);
+    });
+    c.setTeacher(teacherDTOS);
+}catch (NullPointerException e){
+    List<TeacherDTO> teacherDTOS = new ArrayList<>();
+    c.setTeacher(teacherDTOS);
+}
+            c.setStudentcount(course.getStudentscount());
+
 
             courseDTO.add(c);
         });

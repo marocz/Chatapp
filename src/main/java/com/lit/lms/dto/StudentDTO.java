@@ -1,5 +1,10 @@
 package com.lit.lms.dto;
 
+import com.lit.lms.model.Course;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by kashifroshen on 11/3/17.
  */
@@ -43,6 +48,10 @@ public class StudentDTO {
     String city;
     String country;
     String email;
+    String customdata;
+    List<CourseDTO> courses;
+
+
 
     public Long getStudentId() {
         return studentId;
@@ -52,7 +61,13 @@ public class StudentDTO {
         this.studentId = studentId;
     }
 
+    public String getCustomdata() {
+        return customdata;
+    }
 
+    public void setCustomdata(String customdata) {
+        this.customdata = customdata;
+    }
 
     public String getEmail() {
         return email;
@@ -60,6 +75,28 @@ public class StudentDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<CourseDTO> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> coursess) {
+
+        List<CourseDTO> courseDTO = new ArrayList<>();
+        coursess.forEach(course -> {CourseDTO assign = new CourseDTO();
+            assign.setcId(course.getcId());
+            assign.setCurl(course.getCurl());
+            assign.setDeptname(course.getDepartment().getName());
+            assign.setDeptdesc(course.getDepartment().getDescription());
+            assign.setPrice(course.getPrice());
+            assign.setRating(course.getRating());
+            assign.setStudentcount(course.getStudentscount());
+            assign.setTitle(course.getTitle());
+            assign.setDescription(course.getDescription());
+
+            courseDTO.add(assign); });
+        this.courses = courseDTO;
     }
 
 //    public StudentDTO(String fname, ,String email) {

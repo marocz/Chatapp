@@ -1,104 +1,92 @@
 package com.lit.lms.dto;
 
-import com.lit.lms.model.Course;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by kashifroshen on 11/3/17.
  */
-public class StudentDTO {
-    Long studentId;
+public class ModulesDTO {
 
-    public String getFname() {
-        return fname;
+    public Long getModulesid() {
+        return modulesid;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setModulesid(Long modulesid) {
+        this.modulesid = modulesid;
     }
 
-    public String getSname() {
-        return sname;
+    public String getTitle() {
+        return title;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getCity() {
-        return city;
+    public String getContenturl() {
+        return contenturl;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setContenturl(String contenturl) {
+        this.contenturl = contenturl;
     }
 
-    public String getCountry() {
-        return country;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    String fname;
-    String sname;
-    String city;
-    String country;
-    String email;
-    String customdata;
-    List<CourseDTO> courses;
-
-
-
-    public Long getStudentId() {
-        return studentId;
+    public Long getcId() {
+        return cId;
     }
 
-    public void setStudentId(Long studentId) {
-        this.studentId = studentId;
+    public void setcId(Long cId) {
+        this.cId = cId;
+    }
+    public Long getTcreator() {
+        return tcreator;
     }
 
-    public String getCustomdata() {
-        return customdata;
+    public void setTcreator(Long tcreator) {
+        this.tcreator = tcreator;
+    }
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setCustomdata(String customdata) {
-        this.customdata = customdata;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+    public String getStatus() {
+        return status;
     }
 
-    public String getEmail() {
-        return email;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
-    public List<CourseDTO> getCourses() {
-        return courses;
-    }
+    private Long modulesid;
 
-    public void setCourses(List<Course> coursess) {
 
-        List<CourseDTO> courseDTO = new ArrayList<>();
-        coursess.forEach(course -> {CourseDTO assign = new CourseDTO();
-            assign.setcId(course.getcId());
-            assign.setCurl(course.getCurl());
-            assign.setDeptname(course.getDepartment().getName());
-            assign.setDeptdesc(course.getDepartment().getDescription());
-            courseDTO.add(assign); });
-        this.courses = courseDTO;
-    }
+    private String title;
+    private String contenturl;
+    private String description;
 
-//    public StudentDTO(String fname, ,String email) {
-//        this.fname = fname;
-//        this.email = email;
-//    }
+    private Long cId;
+    private Long tcreator;
+    private String status;
 
-    public StudentDTO() {
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createDate;
+
+
+    public ModulesDTO() {
 
     }
 }

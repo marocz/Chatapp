@@ -4,15 +4,24 @@ package com.lit.lms.dto;
  * Created by kashifroshen on 11/1/17.
  */
 public class TeacherDTO {
-    String name;
+    String surname;
+    String firstname;
     String email;
+    String imgurl;
 
-    public String getName() {
-        return name;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurname(String name) {
+        this.surname = surname;
+    }
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String name) {
+        this.firstname = firstname;
     }
 
     public String getEmail() {
@@ -21,6 +30,13 @@ public class TeacherDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
     }
 
     public TeacherDTO() {

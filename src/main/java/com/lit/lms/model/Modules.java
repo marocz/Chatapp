@@ -1,7 +1,10 @@
 package com.lit.lms.model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * Represents the teacher entity
@@ -10,118 +13,96 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "teacher")
-public class Teacher {
+@Table(name = "modules")
+public class Modules {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long tId;
+    private Long mId;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "department_id")
-    private Department department;
+    @JoinColumn(name = "modules")
+    private Course courses;
 
-    @ManyToMany(mappedBy = "teachers")
-    private Set<Course> courses;
+    private String title;
+    private String contenturl;
+    private String description;
+    private Long tcreator;
+    private String status;
 
-    private String surname;
-    private String firstname;
-    private String email;
-    private int rating;
-    private String imgurl;
-    private String reviewscount;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createDate", nullable = true)
+    private Date createDate;
 
 
-    public String getReviewscount() {
-        return reviewscount;
+
+    public String getContenturl() {
+        return contenturl;
     }
 
-    public void setReviewscount(String reviewscount) {
-        this.reviewscount = reviewscount;
-    }
-
-
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setContenturl(String contenturl) {
+        this.contenturl = contenturl;
     }
 
 
-    public String getImgurl() {
-        return imgurl;
+    public String getTitle() {
+        return title;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl;
-    }
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public Long getId() {
-        return tId;
+        return mId;
     }
 
-    public void setId(Long id) {
-        this.tId = id;
+    public void setId(Long mid) {
+        this.mId = mid;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getDescription() {
+        return description;
     }
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Teacher(Department department, String surname, String firstname) {
-        this.department = department;
-        this.surname = surname;
-        this.firstname = firstname;
+    public Long getTcreator() {
+        return tcreator;
     }
 
-    public Teacher() {
+    public void setTcreator(Long tcreator) {
+        this.tcreator = tcreator;
+    }
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+    public Modules() {
 
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
 
-    public Long gettId() {
-        return tId;
-    }
-
-    public void settId(Long tId) {
-        this.tId = tId;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    public Set<Course> getCourses() {
+    public Course getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(Course courses) {
         this.courses = courses;
     }
 }

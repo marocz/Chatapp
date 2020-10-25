@@ -67,7 +67,7 @@ public class QuizController {
         return true;
     }
 
-    @PutMapping("/{id}/questions/{queId}")
+    @PostMapping("/{id}/questions/{queId}")
     @ResponseBody
     public Question editQuestion(@PathVariable("id") Long quizId,@PathVariable("queId") Long questionId, @RequestBody QuizQuestion quizQuestion){
         return quizService.editQuestion(quizId,questionId,quizQuestion);

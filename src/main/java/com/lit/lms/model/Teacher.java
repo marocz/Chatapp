@@ -24,9 +24,41 @@ public class Teacher {
     @ManyToMany(mappedBy = "teachers")
     private Set<Course> courses;
 
-    private String name;
-
+    private String surname;
+    private String firstname;
     private String email;
+    private int rating;
+    private String imgurl;
+    private String reviewscount;
+
+
+    public String getReviewscount() {
+        return reviewscount;
+    }
+
+    public void setReviewscount(String reviewscount) {
+        this.reviewscount = reviewscount;
+    }
+
+
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
+
 
     public String getEmail() {
         return email;
@@ -44,21 +76,29 @@ public class Teacher {
         this.tId = id;
     }
 
-    public String getName() {
-        return name;
+    public String getSurname() {
+        return surname;
+    }
+    public int getRating() {
+        return rating;
     }
 
-    public Teacher(Department department, String name) {
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public Teacher(Department department, String surname, String firstname) {
         this.department = department;
-        this.name = name;
+        this.surname = surname;
+        this.firstname = firstname;
     }
 
     public Teacher() {
 
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public Long gettId() {

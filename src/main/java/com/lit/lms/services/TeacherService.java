@@ -58,7 +58,10 @@ public class TeacherService {
 
         Teacher teacher = new Teacher();
 
-        teacher.setName(teacherDTO.getName());
+        teacher.setFirstname(teacherDTO.getFirstname());
+        teacher.setSurname(teacherDTO.getSurname());
+
+
         teacher.setEmail(teacherDTO.getEmail());
 
         return teacherRepository.save(teacher);

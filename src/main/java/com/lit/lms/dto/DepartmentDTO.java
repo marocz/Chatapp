@@ -66,4 +66,5 @@ public class DepartmentDTO {
     public void setStudents(int[] students) {
         this.students = students;
     }
+
 }
