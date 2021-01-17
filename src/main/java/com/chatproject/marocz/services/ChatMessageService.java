@@ -1,0 +1,67 @@
+package com.chatproject.marocz.services;
+
+import com.chatproject.marocz.exceptions.ResourceNotFoundException;
+import com.chatproject.marocz.model.ChatMessage;
+import com.chatproject.marocz.model.MessageStatus;
+import com.chatproject.marocz.repository.ChatMessageRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
+
+import javax.management.Query;
+import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
+
+@Service
+public class ChatMessageService {
+    @Autowired private ChatMessageRepository repository;
+    @Autowired private ChatRoomService chatRoomService;
+
+
+    public ChatMessage save(ChatMessage chatMessage) {
+        chatMessage.setStatus(MessageStatus.RECEIVED);
+        repository.save(chatMessage);
+        return chatMessage;
+    }
+
+    public long countNewMessages(String senderId, String recipientId) {
+        return repository.countBySenderIdAndRecipientIdAndStatus(
+                senderId, recipientId, MessageStatus.RECEIVED);
+    }
+
+    public List<ChatMessage> findChatMessages(String senderId, String recipientId) {
+        Optional<String> chatId = chatRoomService.getChatId(senderId, recipientId, false);
+
+        List<ChatMessage> messages =
+                chatId.map(cId -> repository.findByChatId(cId)).orElse(new ArrayList<>());
+
+        if(messages.size() > 0) {
+            updateStatuses(senderId, recipientId, MessageStatus.DELIVERED);
+        }
+
+        return messages;
+    }
+
+    public ChatMessage findById(Long id) {
+        return repository
+                .findById(id)
+                .map(chatMessage -> {
+                    chatMessage.setStatus(MessageStatus.DELIVERED);
+                    return repository.save(chatMessage);
+                })
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("can't find message (" + id + ")"));
+    }
+
+    public void updateStatuses(String senderId, String recipientId, MessageStatus status) {
+
+        List<ChatMessage> chatMessage = repository.findBySenderIdAndRecipientId(senderId, recipientId);
+        for(int i = 0; i < chatMessage.size(); i++){
+            ChatMessage chatMessage1 = chatMessage.get(i);
+            chatMessage1.setStatus(status);
+            repository.save(chatMessage1);
+        }
+
+    }
+}
